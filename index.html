@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UFO Bingo Stats Dashboard</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>UFO Bingo Stats Dashboard</h1>
+        <p>
+          *vibe-coded. please take the chance to leave now if you take issue with this. <br></br>
+          Choose either a player or a tier (one at a time), plus a game, to see
+          how often goals were completed, uncompleted, or completed by opponent.
+        </p>
+      </header>
+
+      <section class="controls">
+        <label for="playerSelect">Player</label>
+        <div id="playerControl" class="choice-control">
+          <select id="playerSelect"></select>
+          <button id="playerUsingBadge" type="button" class="using-badge">Using</button>
+        </div>
+
+        <label for="tierSelect">Tier</label>
+        <div id="tierControl" class="choice-control">
+          <select id="tierSelect"></select>
+          <button id="tierUsingBadge" type="button" class="using-badge">Using</button>
+        </div>
+
+        <label for="gameSelect">Game</label>
+        <select id="gameSelect"></select>
+
+        <p id="activeFilter" class="active-filter"></p>
+      </section>
+
+      <section class="results">
+        <h2>Outcome Proportions</h2>
+        <p id="sampleSize"></p>
+
+        <div class="bar-chart" aria-label="Outcome proportions chart">
+          <h3 class="bar-title">Selected filter</h3>
+          <div class="stacked-track">
+            <div id="barByPlayer" class="stacked-segment by-player">0.0%</div>
+            <div id="barUncompleted" class="stacked-segment uncompleted">0.0%</div>
+            <div id="barByOther" class="stacked-segment by-other">0.0%</div>
+          </div>
+          <div class="legend">
+            <span class="legend-item"><span class="legend-swatch by-player"></span>Completed</span>
+            <span class="legend-item"><span class="legend-swatch uncompleted"></span>Uncompleted</span>
+            <span class="legend-item"><span class="legend-swatch by-other"></span>Completed by opponent</span>
+          </div>
+
+          <section id="tierAverageSection" class="tier-average" hidden>
+            <h3 id="tierAverageTitle" class="bar-title"></h3>
+            <p id="tierAverageSample" class="tier-average-sample"></p>
+            <div class="stacked-track">
+              <div id="tierAvgBarByPlayer" class="stacked-segment by-player">0.0%</div>
+              <div id="tierAvgBarUncompleted" class="stacked-segment uncompleted">0.0%</div>
+              <div id="tierAvgBarByOther" class="stacked-segment by-other">0.0%</div>
+            </div>
+            <div class="legend">
+              <span class="legend-item"><span class="legend-swatch by-player"></span>Completed</span>
+              <span class="legend-item"><span class="legend-swatch uncompleted"></span>Uncompleted</span>
+              <span class="legend-item"><span class="legend-swatch by-other"></span>Completed by opponent</span>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section id="status" class="status">Loading CSV data...</section>
+    </main>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
