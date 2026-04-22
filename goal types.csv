@@ -1,0 +1,366 @@
+Goal,Game,Type
+barbuta: purchase the pin,Barbuta,Easy
+barbuta: speak to 2 different bean npcs,Barbuta,Easy
+barbuta: fill 5 item slots (you start at 1),Barbuta,Medium
+barbuta: visit 25+ rooms,Barbuta,Medium
+barbuta: defeat the mimic,Barbuta,Hard
+barbuta: obtain the rod and blood sword,Barbuta,Hard
+barbuta: pay the hammer man to destroy the wall,Barbuta,Very Hard
+bug hunter: get 15 kills by the end of day 4,Bug Hunter,Easy
+bug hunter: get 4 pit kills in one job,Bug Hunter,Easy
+bug hunter: complete a job,Bug Hunter,Medium
+bug hunter: use good-jobs; beat job 1 on {{dig1}}{{dig2}}{{dig3}}{{dig4}}{{dig5}}{{dig6}},Bug Hunter,Medium
+bug hunter: complete a job with your energy maxed out,Bug Hunter,Hard
+bug hunter: work-less allowed; complete job {{bughunterjob}},Bug Hunter,Hard
+bug hunter: gold disk,Bug Hunter,Very Hard
+ninpek: collect 5 purple eggs from enemies,Ninpek,Easy
+"ninpek: score 6,000+ points",Ninpek,Easy
+ninpek: collect a coffee without ever firing a shot,Ninpek,Medium
+ninpek: have 6 extra lives at once,Ninpek,Medium
+ninpek: collect 3 crowns,Ninpek,Hard
+"ninpek: score 18,000+ points",Ninpek,Hard
+"ninpek: use hard-loop; score 22,000+ points",Ninpek,Very Hard
+"paint chase: even-coat allowed; beat courses 16, 17, and 20 while destroying all spike mines",Paint Chase,Easy
+paint chase: score 90+ points,Paint Chase,Easy
+paint chase: beat 5 different courses with no enemies remaining,Paint Chase,Medium
+paint chase: beat 6 courses,Paint Chase,Medium
+paint chase: even-coat allowed; pass courses 18-25,Paint Chase,Hard
+paint chase: score 180+ points,Paint Chase,Hard
+paint chase: score 350+ points,Paint Chase,Very Hard
+magic garden: defeat an enemy worth 700+ points,Magic Garden,Easy
+magic garden: use over-grow; save 30+ oppies in a run,Magic Garden,Easy
+"magic garden: have 100+ oppies saved with fewer than 4,000 points",Magic Garden,Medium
+"magic garden: score 10,000+ points with fewer than 50 oppies saved",Magic Garden,Medium
+magic garden: gold disk,Magic Garden,Hard
+magic garden: obtain a score multiplier of 8x,Magic Garden,Hard
+"magic garden: win with a score of 50,000+",Magic Garden,Very Hard
+mortol: collect 6 extra life pickups,Mortol,Easy
+mortol: open-tomb allowed; kill 6 enemy spawners in 2-b using fire arrows,Mortol,Easy
+mortol: clear all levels in world 1,Mortol,Medium
+mortol: have 50+ lives,Mortol,Medium
+mortol: open-tomb allowed; clear 3 levels with +12 lives or better on each,Mortol,Hard
+mortol: open-tomb allowed; clear all world 2 levels,Mortol,Hard
+mortol: open-tomb allowed; beat all world 3 & world 4 levels,Mortol,Very Hard
+velgress: clear out a shop's stock,Velgress,Easy
+velgress: hold 50+ coins at once,Velgress,Easy
+velgress: beat level 1 while defeating all enemies using your blaster,Velgress,Medium
+velgress: beat level 2 while stepping on every bomb block,Velgress,Medium
+velgress: collect all 3 keys in a run,Velgress,Hard
+velgress: gold disk with 50+ coins held,Velgress,Hard
+velgress: cherry disk without upgrades or jump pads,Velgress,Very Hard
+planet zoldath: collect 4 energy cubes in a run,Planet Zoldath,Easy
+planet zoldath: drop 4 items at your ship in one run,Planet Zoldath,Easy
+planet zoldath: collect the overworld ground map piece,Planet Zoldath,Medium
+planet zoldath: have 2+ of each resource at once,Planet Zoldath,Medium
+planet zoldath: collect the dungeon map piece,Planet Zoldath,Hard
+planet zoldath: collect the trade map piece,Planet Zoldath,Hard
+planet zoldath: use trot-ters; beat seed {{dig1}}{{dig2}}{{dig3}}{{dig4}}{{dig5}}{{dig6}},Planet Zoldath,Very Hard
+attactics: have 3 heroes at once (ranked or survival mode),Attactics,Easy
+attactics: win 5 battles without losing any flags,Attactics,Easy
+attactics: beat campaign level 8,Attactics,Medium
+attactics: reach lieutenant (50+) in ranked mode,Attactics,Medium
+attactics: score 1000+ points in survival mode,Attactics,Hard
+attactics: use slow-down; win a rank 160 battle after spawning 2+ heroes,Attactics,Hard
+attactics: reach lord (100+) in ranked mode,Attactics,Very Hard
+devilition: beat 3 rounds in a run while placing the maximum number of pieces each round,Devilition,Easy
+devilition: kill 3 or more villagers in one combo and survive the round,Devilition,Easy
+devilition: have 6 villagers at once,Devilition,Medium
+devilition: reach round 6,Devilition,Medium
+"devilition: beat 5 rounds in a run, destroying all demons and humans each round",Devilition,Hard
+devilition: clear the screen of demons with 18+ pieces remaining,Devilition,Hard
+devilition: reach round 8,Devilition,Very Hard
+"kick club: reach track world with 19,000 points or less",Kick Club,Easy
+"kick club: score 25,000+ points",Kick Club,Easy
+kick club: beat track world,Kick Club,Medium
+kick club: eat 10 hidden desserts,Kick Club,Medium
+"kick club: defeat the goalie, then the net in ice world",Kick Club,Hard
+kick club: have 5 extra lives at once,Kick Club,Hard
+"kick club: score 150,000+ points or gold disk",Kick Club,Very Hard
+avianos: capture 3 enemy tiles in one campaign war,Avianos,Easy
+avianos: control 15+ tiles at once,Avianos,Easy
+avianos: blue-beak allowed; win the campaign fledgling game. you must always select {{ancestor}} when available,Avianos,Medium
+"avianos: win a custom fledgling game with 0 mountains (p2 first, other settings default)",Avianos,Medium
+avianos: blue-beak allowed; beat trial 4,Avianos,Hard
+avianos: blue-beak allowed; win the adult campaign game with a blessing from each ancestor,Avianos,Hard
+avianos: gold disk,Avianos,Very Hard
+mooncat: defeat 6 unique enemy types,Mooncat,Easy
+mooncat: use 3 warps,Mooncat,Easy
+mooncat: spawn 3 different sets of egg blocks,Mooncat,Medium
+mooncat: successfully exit two different water rooms,Mooncat,Medium
+mooncat: beat a room that contains a spear thrower and one that contains a gray spider,Mooncat,Hard
+mooncat: gold disk,Mooncat,Hard
+mooncat: find 2 of 3 eggs,Mooncat,Very Hard
+bushido ball: win 2 rounds in a tournament (laws on),Bushido Ball,Easy
+bushido ball: win a 10+ point round (laws on),Bushido Ball,Easy
+"bushido ball: win a 16-point round on hyper speed (laws on, timer off)",Bushido Ball,Medium
+"bushido ball: win the first 2 rounds as {{bushido_all}} (laws on, 8+ points)",Bushido Ball,Medium
+"bushido ball: win 3 rounds in a tournament as {{bushido_all}} (laws on, 8+ points)",Bushido Ball,Hard
+bushido ball: win the first round as every character,Bushido Ball,Hard
+"bushido ball: gold disk as {{bushido_gold}} (laws on, 8+ points)",Bushido Ball,Very Hard
+block koala: beat 3 story levels without using the undo button,Block Koala,Easy
+"block koala: worm-1234 allowed; beat levels {{bk_easy}}, {{bk_easy}}, {{bk_easy}}, {{bk_easy}}",Block Koala,Easy
+"block koala: worm-1234 allowed; beat levels {{bk_med}}, {{bk_med}}, {{bk_med}}, {{bk_med}}",Block Koala,Medium
+"block koala: worm-1234 allowed; beat levels {{bk_hard}}, {{bk_hard}}, {{bk_hard}}",Block Koala,Hard
+"block koala: worm-1234 allowed; beat levels {{bk_easy}}, {{bk_easy}}, {{bk_easy}}, {{bk_med}}, {{bk_med}}, {{bk_hard}}, {{bk_hard}}, {{bk_vhard}}",Block Koala,Very Hard
+camouflage: escape with 10 oranges,Camouflage,Easy
+"camouflage: form-elda allowed; beat levels {{camo_easy}}, {{camo_easy}}, and {{camo_easy}}",Camouflage,Easy
+camouflage: escape with 5 babies,Camouflage,Medium
+camouflage: gold disk,Camouflage,Medium
+"camouflage: form-elda allowed; escape with 2/3 collectibles on: {{camo_two_ez}}, {{camo_two_ez}}, {{camo_two_long}}, {{camo_two_long}}, {{camo_two_long}}",Camouflage,Hard
+"camouflage: form-elda allowed; escape with 3/3 collectibles on: {{camo_easy}}, {{camo_three}}, {{camo_three}}, {{camo_three}}",Camouflage,Hard
+camouflage: show 70%+ completion in the library,Camouflage,Very Hard
+campanella: collect 7 coffees,Campanella,Easy
+"campanella: use bean-drip; score 6,000+ points",Campanella,Easy
+campanella: defeat the stage b boss,Campanella,Medium
+"campanella: score 20,000+ points",Campanella,Medium
+campanella: finish stage c only earning points from bosses and bonus stages in the run,Campanella,Hard
+campanella: have 25+ lives,Campanella,Hard
+campanella: gold disk,Campanella,Very Hard
+golfaria: hit 3 eagles,Golfaria,Easy
+golfaria: save 2 green ball npcs,Golfaria,Easy
+golfaria: hit 3 parbots,Golfaria,Medium
+golfaria: obtain the brakes,Golfaria,Medium
+golfaria: collect 2 holy tee pieces,Golfaria,Hard
+golfaria: show 20%+ completion in the library,Golfaria,Hard
+golfaria: collect 5 clubs & the sand roll,Golfaria,Very Hard
+the big bell race: ko an opponent with 3 unique power-ups,The Big Bell Race,Easy
+the big bell race: win race 1 without boosters,The Big Bell Race,Easy
+the big bell race: use kiwi-aura; win on 3 courses,The Big Bell Race,Medium
+the big bell race: win on 3 courses without collecting power-ups,The Big Bell Race,Medium
+the big bell race: complete a full lap in reverse and win on 4 separate tracks,The Big Bell Race,Hard
+the big bell race: reach 45+ points,The Big Bell Race,Hard
+the big bell race: gold disk with no deaths,The Big Bell Race,Very Hard
+"warptank: beat 3 sectors, defeating all possible enemies in each",Warptank,Easy
+"warptank: beat sectors: {{warp_easy}}, {{warp_easy}}, {{warp_easy}}",Warptank,Easy
+warptank: beat healing sector with your tank color changed,Warptank,Medium
+"warptank: slim-tank allowed; beat sectors: {{warp_med}}, {{warp_med}}, {{warp_med}}",Warptank,Medium
+warptank: collect 4 coffees outside the starting room,Warptank,Hard
+"warptank: slim-tank allowed; beat sectors: {{warp_hard}}, {{warp_hard}}, {{warp_hard}}",Warptank,Hard
+warptank: beat 9 sectors and speak to 3 npcs,Warptank,Very Hard
+waldorf's journey: have 35 shells at once,Waldorf's Journey,Easy
+waldorf's journey: have 4 puffins at once,Waldorf's Journey,Easy
+waldorf's journey: have 50+ shells at once while outside the palace,Waldorf's Journey,Medium
+waldorf's journey: open 2 chests in a run,Waldorf's Journey,Medium
+waldorf's journey: cherry disk,Waldorf's Journey,Hard
+waldorf's journey: enter the palace without collecting any puffins,Waldorf's Journey,Hard
+waldorf's journey: enter the palace with 6 puffins,Waldorf's Journey,Very Hard
+porgy: collect 4 fuel tanks,Porgy,Easy
+porgy: equip the {{porgy_upgrade}},Porgy,Easy
+porgy: collect 4 torpedo upgrades,Porgy,Medium
+porgy: equip the {{porgy_upgrade2}},Porgy,Medium
+porgy: defeat a boss,Porgy,Hard
+porgy: return 4 fish eggs to their mother,Porgy,Hard
+porgy: show 20%+ completion in the library,Porgy,Very Hard
+onion delivery: complete a day with 6+ time boxes hit,Onion Delivery,Easy
+onion delivery: deliver 8 onions and complete the day,Onion Delivery,Easy
+onion delivery: complete day 3,Onion Delivery,Medium
+onion delivery: show 12+ deliveries made on the counter,Onion Delivery,Medium
+onion delivery: complete 2 days in a run with 10+ deliveries,Onion Delivery,Hard
+onion delivery: complete 4 days in a run with 7+ deliveries,Onion Delivery,Hard
+onion delivery: gold disk,Onion Delivery,Very Hard
+"caramel caramel: score 8,000+ points in the prologue",Caramel Caramel,Easy
+caramel caramel: snap 10 bonus background elements,Caramel Caramel,Easy
+caramel caramel: beat the egg,Caramel Caramel,Medium
+caramel caramel: test-lens allowed; clear dino planet,Caramel Caramel,Medium
+"caramel caramel: score 50,000+ points",Caramel Caramel,Hard
+caramel caramel: test-lens allowed; beat ghost planet without using the camera before the boss,Caramel Caramel,Hard
+"caramel caramel: score 100,000+ points or gold disk",Caramel Caramel,Very Hard
+party house: have 1 of each star guest in a party at once in {{ph_scenario}},Party House,Easy
+party house: have 6 trouble in a party at once (busting ok),Party House,Easy
+party house: beat {{ph_all}},Party House,Medium
+party house: use vips-only; beat seed {{dig1}}{{dig2}}{{dig3}}{{dig4}}{{dig5}}{{dig6}},Party House,Medium
+party house: beat {{ph_all}} with at least one of each guest purchased in the shop,Party House,Hard
+party house: beat {{ph_all}} with your popularity maxed out,Party House,Hard
+party house: beat 2 random scenarios in a row,Party House,Very Hard
+"hot foot: use test-bags: win a 30-point, 1-special-cost game. all throws that score points must be special throws",Hot Foot,Easy
+hot foot: win the first match using 6 different characters,Hot Foot,Easy
+hot foot: win 2 games in a row without jumping using {{hf_char}} & {{hf_char}},Hot Foot,Medium
+"hot foot: win 3 games in a tournament without jump specials, using {{hf_char}} & {{hf_char}}",Hot Foot,Medium
+hot foot: beat round 4 using {{hf_char}} & {{hf_char}},Hot Foot,Hard
+hot foot: get 3 blowouts in a tournament using {{hf_char}} & {{hf_char}},Hot Foot,Hard
+hot foot: gold disk using {{hf_gold}} & {{hf_gold}},Hot Foot,Very Hard
+divers: purchase godblood,Divers,Easy
+divers: reach level 3,Divers,Easy
+divers: defeat 5 unique enemy types,Divers,Medium
+divers: open 3 chests that do not contain money,Divers,Medium
+divers: obtain a lance weapon,Divers,Hard
+divers: pull 2 levers,Divers,Hard
+divers: win a fight against piranhas,Divers,Very Hard
+rail heist: beat 5 levels,Rail Heist,Easy
+rail heist: lazy-cops allowed; beat root around while destroying every barrel,Rail Heist,Easy
+rail heist: lazy-cops allowed; beat vengeance! & the final score,Rail Heist,Medium
+rail heist: use good-spur; beat fowl business with all chickens and lawmen killed,Rail Heist,Medium
+"rail heist: lazy-cops allowed; beat levels with 3/3 stars: {{rail_easy}}, {{rail_stars}}, {{rail_stars}}",Rail Heist,Hard
+"rail heist: lazy-cops allowed; beat levels with a money crate in tact: {{rail_easy}}, {{rail_crate}}, {{rail_crate}}, {{rail_crate}}",Rail Heist,Hard
+rail heist: collect 9 devil stars,Rail Heist,Very Hard
+vainger: collect 3 pickups,Vainger,Easy
+vainger: defeat a boss,Vainger,Easy
+vainger: collect 5 pickups,Vainger,Medium
+vainger: defeat 3 bosses,Vainger,Medium
+vainger: obtain a keycode from a major boss,Vainger,Medium
+vainger: obtain the force mod from verde sector,Vainger,Hard
+vainger: obtain the multi mod from latom sector,Vainger,Hard
+vainger: show 25%+ completion in the library,Vainger,Very Hard
+rock on! island: beat initial encounter,Rock On! Island,Easy
+rock on! island: have all 6 fully upgraded cavemen types at once (no villages),Rock On! Island,Easy
+rock on! island: club-pass allowed; beat {{roi_level}},Rock On! Island,Medium
+rock on! island: club-pass allowed; beat {{roi_level}} without chickens,Rock On! Island,Hard
+rock on! island: club-pass allowed; survive the first 5 waves of the four emperors w/o losing health,Rock On! Island,Hard
+rock on! island: club-pass allowed; perfect {{roi_vh}},Rock On! Island,Very Hard
+pingolf: destroy 10 orange obstacles,Pingolf,Easy
+pingolf: under par on 5 courses,Pingolf,Easy
+pingolf: finish hole 9 in first place,Pingolf,Medium
+pingolf: par or better on 6 courses without dunking,Pingolf,Medium
+pingolf: hole-in-one on 3 different courses,Pingolf,Hard
+pingolf: par or better on 6 courses with no purple objects remaining,Pingolf,Hard
+pingolf: cherry disk without going over par on more than two holes,Pingolf,Very Hard
+mortol ii: activate all 3 switches,Mortol II,Easy
+"mortol ii: in one run, kill 6 chickens without damaging them as bomber",Mortol II,Easy
+mortol ii: have 8 keys at once,Mortol II,Medium
+"mortol ii: in one run, get eaten by all 4 worms",Mortol II,Medium
+mortol ii: defeat all 3 mini bosses without damaging them as bomber,Mortol II,Hard
+mortol ii: gold disk without blowing anything up,Mortol II,Hard
+mortol ii: activate all 3 switches without using portals or double jumps,Mortol II,Very Hard
+fist hell: enter a shop with $20+,Fist Hell,Easy
+fist hell: reach wave 7 in the gym,Fist Hell,Easy
+fist hell: beat the 2nd scare,Fist Hell,Medium
+fist hell: have $50 at once as {{fh_char}},Fist Hell,Medium
+fist hell: beat the 3rd scare,Fist Hell,Hard
+fist hell: reach wave 10 in the gym using {{fh_char}},Fist Hell,Hard
+fist hell: beat the 4th scare,Fist Hell,Very Hard
+overbold: have 4 upgrades maxed out at once,Overbold,Easy
+overbold: purchase 3 price hiked items in one run,Overbold,Easy
+overbold: complete a wave with $1000+ stakes without using bombs,Overbold,Medium
+overbold: complete a wave with $800+ stakes without shooting,Overbold,Medium
+overbold: clear a round with $1600+ stakes,Overbold,Hard
+overbold: gold disk,Overbold,Hard
+overbold: cherry disk,Overbold,Very Hard
+campanella 2: defeat rotondo at end of burrows ii,Campanella 2,Easy
+campanella 2: have 2 upgrades at once (square icons),Campanella 2,Easy
+campanella 2: obtain the friendship bracelet,Campanella 2,Medium
+campanella 2: obtain the talisman (cross) item,Campanella 2,Medium
+campanella 2: clear moire woods ii or rink ii,Campanella 2,Hard
+campanella 2: collect two scrolls in one run,Campanella 2,Hard
+campanella 2: obtain 6 power-up items in one run (square icons),Campanella 2,Very Hard
+hyper contender: use past-rule; beat draft mode twice,Hyper Contender,Easy
+hyper contender: win 4 fights in one run (default ring settings),Hyper Contender,Easy
+hyper contender: beat draft mode (default ring settings),Hyper Contender,Medium
+hyper contender: use past-rule; beat tournament mode,Hyper Contender,Medium
+hyper contender: gold disk as {{hc_char}} or {{hc_char}},Hyper Contender,Hard
+hyper contender: win 3 fights in one run on hyper difficulty (default ring settings),Hyper Contender,Hard
+hyper contender: gold disk on hard or hyper difficulty,Hyper Contender,Very Hard
+valbrace: defeat the crone,Valbrace,Easy
+valbrace: give the red knight 5 items,Valbrace,Easy
+valbrace: clear floor 1,Valbrace,Medium
+valbrace: use up a throne without defeating the crone,Valbrace,Medium
+valbrace: obtain the zweihander,Valbrace,Hard
+valbrace: solve 2 gem puzzles,Valbrace,Hard
+valbrace: level up at two thrones & defeat the phantom knight on floor 2,Valbrace,Very Hard
+rakshasa: destroy 4 bug nests with your weapon in one run,Rakshasa,Easy
+"rakshasa: equip all 3 weapons and score 6,000+ points in one run",Rakshasa,Easy
+rakshasa: beat the first stage,Rakshasa,Medium
+rakshasa: beat the green bridge mini-boss by arriving w/ 4+ skulls,Rakshasa,Medium
+rakshasa: beat the second stage,Rakshasa,Hard
+"rakshasa: score 30,000+ points",Rakshasa,Hard
+rakshasa: gold disk,Rakshasa,Very Hard
+star waspir: beat wave 1 without defeating either boss enemy,Star Waspir,Easy
+"star waspir: score 20,000+ points using the {{waspir_ship}} ship",Star Waspir,Easy
+star waspir: have a 30x multiplier,Star Waspir,Medium
+"star waspir: score 50,000+ points",Star Waspir,Medium
+"star waspir: clear waves 1 and 2 without using powerups (eee, ggg, gee)",Star Waspir,Hard
+"star waspir: score 125,000+ points using the {{waspir_ship}} ship",Star Waspir,Hard
+star waspir: clear wave 3,Star Waspir,Very Hard
+grimstone: defeat 15 enemies,Grimstone,Easy
+grimstone: get rufus to level 2 and feed him a dog treat,Grimstone,Easy
+grimstone: collect the money from the burned house,Grimstone,Medium
+grimstone: have 3 skills learned at once,Grimstone,Medium
+grimstone: have 4 items equipped to everyone in a posse of 4,Grimstone,Hard
+grimstone: reach level 4 with any character,Grimstone,Hard
+"grimstone: with a posse of 4 all at level 3+, see 1500 teeth in your bank account",Grimstone,Very Hard
+lords of diskonia: destroy 2+ enemy disks in one shot,Lords of Diskonia,Easy
+lords of diskonia: have 5 enemy disks drown,Lords of Diskonia,Easy
+lords of diskonia: beat narrow pass,Lords of Diskonia,Medium
+lords of diskonia: win a quick battle,Lords of Diskonia,Medium
+lords of diskonia: win 1 battle in a full war on commander difficulty,Lords of Diskonia,Hard
+lords of diskonia: win 2 battles in one full war,Lords of Diskonia,Hard
+lords of diskonia: win a full war on knight+ difficulty,Lords of Diskonia,Very Hard
+night manor: find 10 journal entries,Night Manor,Easy
+night manor: win the hiding minigame twice,Night Manor,Easy
+night manor: collect the {{gemstone}},Night Manor,Medium
+night manor: make fungicide,Night Manor,Medium
+night manor: show 60%+ items found in the library,Night Manor,Hard
+night manor: win the hiding minigame in 5 different places,Night Manor,Hard
+night manor: cherry disk,Night Manor,Very Hard
+elfazar's hat: earn an extra life in the bonus round,Elfazar's Hat,Easy
+elfazar's hat: get three different level 2 upgrades in a run,Elfazar's Hat,Easy
+elfazar's hat: clear stage 1 without dying,Elfazar's Hat,Medium
+elfazar's hat: clear stages 1 & 2 without upgrades or healing,Elfazar's Hat,Medium
+elfazar's hat: clear stage 3,Elfazar's Hat,Hard
+elfazar's hat: collect 6 tickets in a run,Elfazar's Hat,Hard
+elfazar's hat: clear stage 4,Elfazar's Hat,Very Hard
+pilot quest: craft an ingot at the crash site,Pilot Quest,Easy
+pilot quest: make a friend at the crash site,Pilot Quest,Easy
+pilot quest: defeat 6 different enemy types,Pilot Quest,Medium
+pilot quest: defeat unktomi (spider boss),Pilot Quest,Medium
+pilot quest: activate 2 teleporters,Pilot Quest,Hard
+pilot quest: obtain the blaster,Pilot Quest,Hard
+pilot quest: return a ship part to the crash site,Pilot Quest,Very Hard
+mini & max: collect the full reward for ridding the books of silverfish,Mini & Max,Easy
+mini & max: collect the reward from 2 spiders' quests,Mini & Max,Easy
+mini & max: collect the full reward for saving the brainwashed mouse near the portrait,Mini & Max,Medium
+mini & max: return the stolen termite egg to the outlet,Mini & Max,Medium
+mini & max: collect a big shiny,Mini & Max,Hard
+mini & max: have 150+ shinies at once without obtaining the shrink potion,Mini & Max,Hard
+mini & max: have 350+ shinies at once,Mini & Max,Very Hard
+combatants: beat 2 levels,Combatants,Easy
+combatants: beat first blood without shooting,Combatants,Easy
+combatants: ants-ants allowed; beat {{ants_med}} & {{ants_med}},Combatants,Medium
+combatants: ants-ants allowed; beat {{ants_hard}} & {{ants_hard}},Combatants,Hard
+combatants: ants-ants allowed; slay a spider on 2 different levels,Combatants,Hard
+combatants: ants-ants allowed; beat this is it,Combatants,Very Hard
+quibble race: bet against your sponsored quibble and win the round,Quibble Race,Easy
+"quibble race: have your sponsored quibble win the race, while boosting a different one",Quibble Race,Easy
+"quibble race: wild-bets allowed; have $25,000+",Quibble Race,Medium
+quibble race: win 5 bets,Quibble Race,Medium
+quibble race: gold disk,Quibble Race,Hard
+quibble race: win 3 bets on quibbles with a 5:1 or higher payout,Quibble Race,Hard
+quibble race: cherry disk,Quibble Race,Very Hard
+"seaside drive: clear stage 1 with 3 lives and exactly 10,000 points",Seaside Drive,Easy
+seaside drive: collect a coin by winning a bonus game,Seaside Drive,Easy
+seaside drive: beat stage 2,Seaside Drive,Medium
+"seaside drive: score 70,000+ points",Seaside Drive,Medium
+seaside drive: destroy the ufo in stage 3,Seaside Drive,Hard
+seaside drive: use weak-shot; beat stage 2,Seaside Drive,Hard
+"seaside drive: score 200,000+ points or gold disk",Seaside Drive,Very Hard
+campanella 3: defeat galbrain (stage a boss),Campanella 3,Easy
+campanella 3: earn a continue from the bonus game,Campanella 3,Easy
+campanella 3: beat robopoke (stage b boss),Campanella 3,Medium
+campanella 3: clear 6 waves 100%,Campanella 3,Medium
+campanella 3: defeat robopoke with 2+ continues,Campanella 3,Hard
+campanella 3: earn 3 star waves in stage c,Campanella 3,Hard
+campanella 3: earn 2 star waves in stage d,Campanella 3,Very Hard
+cyber owls: beat {{owls}},Cyber Owls,Easy
+cyber owls: defeat 2 bosses,Cyber Owls,Medium
+cyber owls: getm-eout allowed; beat a random rescue game using each owl,Cyber Owls,Medium
+cyber owls: clear moscow with 1200+ score,Cyber Owls,Hard
+cyber owls: show 2000+ points at hq without playing congo basin,Cyber Owls,Hard
+cyber owls: hawk-base allowed; beat antarctica,Cyber Owls,Very Hard
+collect {{gift_count}} gifts from games on this card,General,Gift
+cherry disk {{cherry_count}} games on this card,General,Cherry
+gold disk {{gold_count}} games on this card,General,Gold
+"amy: beat 5 levels across party house, fist hell, and hot foot, with 1+ in each",General,Theme
+"campanella trilogy: beat 5 total worlds across campanella 1, 2, and 3",General,Theme
+"day job: beat 9 levels across rail heist, onion delivery, and bug hunter",General,Theme
+"metroidvania: collect 6 abilities across porgy, vainger, and golfaria",General,Theme
+"puzzler: beat 15 levels across block koala, devilition, and warptank",General,Theme
+"racer: win 12 races across paint chase, the big bell race, and quibble race",General,Theme
+"revolutionary: beat 5 levels across mortol, cyber owls, rock on! island",General,Theme
+"role player: level up your highest-level character 5 total times across grimstone, divers, valbrace",General,Theme
+"shooter: beat 5 waves/stages across elfazar's hat, seaside drive, and caramel caramel",General,Theme
+"war is bad: win 9 battles across attactics, avianos, and combatants",General,Theme
+beat 2 levels in 6 games on this card,General,Level
+beat 4 levels in 5 games on this card,General,Level
+beat 8 levels in 3 games on this card,General,Level
+defeat 2 bosses in 4 games on this card,General,Boss
+defeat 8 bosses from games on this card,General,Boss
+defeat a boss in 6 games on this card,General,Boss

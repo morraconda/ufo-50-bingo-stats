@@ -1,0 +1,50 @@
+1	Barbuta
+2	Bug Hunter
+3	Ninpek
+4	Paint Chase
+5	Magic Garden
+6	Mortol
+7	Velgress
+8	Planet Zoldath
+9	Attactics
+10	Devilition
+11	Kick Club
+12	Avianos
+13	Mooncat
+14	Bushido Ball
+15	Block Koala
+16	Camouflage
+17	Campanella
+18	Golfaria
+19	The Big Bell Race
+20	Warptank
+21	Waldorf's Journey
+22	Porgy
+23	Onion Delivery
+24	Caramel Caramel
+25	Party House
+26	Hot Foot
+27	Divers
+28	Rail Heist
+29	Vainger
+30	Rock On! Island
+31	Pingolf
+32	Mortol 2
+33	Fist Hell
+34	Overbold
+35	Campanella 2
+36	Hyper Contender
+37	Valbrace
+38	Rakshasa
+39	Star Waspir
+40	Grimstone
+41	Lords of Diskonia
+42	Night Manor
+43	Elfazar's Hat
+44	Pilot Quest
+45	Mini and Max
+46	Combatants
+47	Quibble Race
+48	Seaside Drive
+49	Campanella 3
+50	Cyber Owls

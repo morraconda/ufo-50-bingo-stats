@@ -1,0 +1,144 @@
+Found 142 unique source goals with no difficulty/type defined:
+
+AMY: Beat 5 levels across Party House, Fist Hell, and Hot Foot
+ATTACTICS: Use SLOW-DOWN; Win a rank 160 battle after spawning at least 2 heroes
+ATTACTICS: Use SLOW-DOWN; win a rank 160 battle after spawning at least 2 heroes
+AVIANOS: BLUE-BEAK allowed; Win the campaign Fledgling game. You must always select {{ancestor}} when available
+BLOCK KOALA: WORM-1234 allowed; Beat levels {{bk_easy}}, {{bk_easy}}, {{bk_easy}}, {{bk_easy}}
+BLOCK KOALA: WORM-1234 allowed; Beat levels {{bk_easy}}, {{bk_easy}}, {{bk_easy}}, {{bk_med}}, {{bk_med}}, {{bk_hard}}, {{bk_hard}}, {{bk_vhard}}
+BLOCK KOALA: WORM-1234 allowed; Beat levels {{bk_hard}}, {{bk_hard}}, {{bk_hard}}
+BLOCK KOALA: WORM-1234 allowed; Beat levels {{bk_med}}, {{bk_med}}, {{bk_med}}, {{bk_med}}
+BUG HUNTER: Use GOOD-JOBS; Beat Job 1 on {{dig1}}{{dig2}}{{dig3}}{{dig4}}{{dig5}}{{dig6}}
+BUG HUNTER: WORK-LESS allowed; Complete Job {{bughunterjob}}
+BUG HUNTER: WORK-LESS allowed; complete Job 8
+BUG HUNTER: WORK-LESS allowed; complete Job 9
+BUSHIDO BALL: Beat the first two rounds as Ayumi (laws on, 8+ points)
+BUSHIDO BALL: Beat the first two rounds as Yamada (laws on, 8+ points)
+BUSHIDO BALL: Beat the first two rounds as {{bushido_all}} (laws on, 8+ points)
+BUSHIDO BALL: Gold disk as {{bushido_gold}} (laws on, 8+ points)
+BUSHIDO BALL: Win 3 matches in a tournament as Raizo (laws on, 8+ points)
+BUSHIDO BALL: Win 3 matches in a tournament as Yamada (laws on, 8+ points)
+BUSHIDO BALL: Win 3 matches in a tournament as {{bushido_all}} (laws on, 8+ points)
+BUSHIDO BALL: Win 3 rounds in a tournament as {{bushido_all}} (laws on, 8+ points)
+BUSHIDO BALL: Win a 10+ point match (laws on)
+BUSHIDO BALL: Win a 16-point match on Hyper speed (laws on)
+BUSHIDO BALL: Win the first 2 rounds as {{bushido_all}} (laws on, 8+ points)
+BUSHIDO BALL: Win the first match as every character
+BUSHIDO BALL: Win the first two rounds as {{bushido_all}} (laws on, 8+ points)
+CAMOUFLAGE: FORM-ELDA allowed; Beat levels {{camo_easy}}, {{camo_easy}}, and {{camo_easy}}
+CAMOUFLAGE: FORM-ELDA allowed; Escape with 2/3 collectibles on: {{camo_two_ez}}, {{camo_two_ez}}, {{camo_two_long}}, {{camo_two_long}}, {{camo_two_long}}
+CAMOUFLAGE: FORM-ELDA allowed; Escape with 3/3 collectibles on: {{camo_easy}}, {{camo_three}}, {{camo_three}}, {{camo_three}}
+CAMPANELLA 2: Have two upgrades at once (square icons)
+CAMPANELLA 2: Obtain 6 power-up items in one run (square icons on left of screen)
+COMBATANTS: ANTS-ANTS allowed; Beat {{ants_hard}} & {{ants_hard}}
+COMBATANTS: ANTS-ANTS allowed; Beat {{ants_med}} & {{ants_med}}
+COMBATANTS: ANTS-ANTS allowed; beat Ambush & Open Field
+COMBATANTS: ANTS-ANTS allowed; beat Pincered & Open Field
+COMBATANTS: Beat Skirmish
+CYBER OWLS: Beat {{owls}}
+CYBER OWLS: Show 2000+ points at HQ without playing Congo
+Cherry disk {{cherry_count}} games on this card
+Collect {{gift_count}} gifts from games on this card
+DEVILITION: Beat 5 rounds in a run without placing the middle piece
+DEVILITION: Clear the screen of demons with at least 18 pieces remaining
+Defeat 6 enemy types in 6 games on this card
+FIST HELL: Clear the 4th scare
+FIST HELL: Have $50 at once as {{fh_char}}
+FIST HELL: Reach wave 10 in the gym using {{fh_char}}
+GOLFARIA: Collect 5 clubs & the Sand Roll in one run
+Gold disk {{gold_count}} games on this card
+HOT FOOT: Beat round 4 using {{hf_char}} & {{hf_char}}
+HOT FOOT: Get 3 blowouts in a tournament using {{hf_char}} & {{hf_char}}
+HOT FOOT: Get 3 blowouts in one tournament using {{hf_char}} & {{hf_char}}
+HOT FOOT: Gold disk using {{hf_gold}} & {{hf_gold}}
+HOT FOOT: Win 2 games in a row without jumping using {{hf_char}} & {{hf_char}}
+HOT FOOT: Win 3 games in a tournament without jump specials, using {{hf_char}} & {{hf_char}}
+HOT FOOT: Win 3 games in a tournament without using any jump specials, using {{hf_char}} & {{hf_char}}
+HYPER CONTENDER: Gold disk as {{hc_char}} or {{hc_char}}
+LORDS OF DISKONIA: Win 2 battles in a Full War
+MAGIC GARDEN: Defeat an enemy worth at least 700 points
+MAGIC GARDEN: Save 100 oppies before scoring 4,000 points
+MAGIC GARDEN: Score 10,000+ points before saving 50 Oppies
+MORTOL II: Activate all the switches
+MORTOL II: Activate all three switches without using portals or double jumps
+MORTOL II: Defeat all three mini bosses without damaging them as Bomber
+MORTOL: OPEN-TOMB allowed; Clear any 3 levels with +12 lives or better on each
+MORTOL: OPEN-TOMB allowed; clear any 3 levels with +12 lives or better on each
+NIGHT MANOR: Collect the {{gemstone}}
+NIGHT MANOR: Win the hiding minigame in five different places
+ONION DELIVERY: Deliver 8+ onions and complete the day
+ONION DELIVERY: Show 12 deliveries made on the counter
+OVERBOLD: Max out 4 upgrades at once
+PAINT CHASE: Reach 90+ score after beating at least 3 levels
+PAINT CHASE: Reach a score of 90+
+PARTY HOUSE: Beat {{ph_all}}
+PARTY HOUSE: Beat {{ph_all}} with at least one of each guest purchased in the shop
+PARTY HOUSE: Beat {{ph_all}} with your popularity maxed out
+PARTY HOUSE: Have 1 of each star guest in a party at once in {{ph_scenario}}
+PARTY HOUSE: Use VIPS-ONLY; Beat seed {{dig1}}{{dig2}}{{dig3}}{{dig4}}{{dig5}}{{dig6}}
+PINGOLF: Par or better on 7 courses with no purple objects remaining
+PLANET ZOLDATH: Have 2 of each resource at once
+PLANET ZOLDATH: Use TROT-TERS; Beat seed {{dig1}}{{dig2}}{{dig3}}{{dig4}}{{dig5}}{{dig6}}
+PORGY: Equip the {{porgy_upgrade2}}
+PORGY: Equip the {{porgy_upgrade}}
+RAIL HEIST: GOOD-SPUR allowed; Beat Fowl Business with all chickens and lawmen killed
+RAIL HEIST: GOOD-SPUR allowed; beat Fowl Business with all chickens and lawmen killed
+RAIL HEIST: LAZY-COPS allowed; Beat Vengence! & The Final Score
+RAIL HEIST: LAZY-COPS allowed; Beat levels with 3/3 stars: {{rail_easy}}, {{rail_stars}}, {{rail_stars}}
+RAIL HEIST: LAZY-COPS allowed; Beat levels with a money crate in tact: {{rail_easy}}, {{rail_crate}}, {{rail_crate}}, {{rail_crate}}
+RAKSHASA: Score 2,000+ points with each of the three weapon types in one run
+ROCK ON! ISLAND: CLUB-PASS allowed; Beat {{roi_level}}
+ROCK ON! ISLAND: CLUB-PASS allowed; Beat {{roi_level}} without chickens
+ROCK ON! ISLAND: CLUB-PASS allowed; Perfect {{roi_vh}}
+ROCK ON! ISLAND: CLUB-PASS allowed; beat Crossroads
+ROCK ON! ISLAND: CLUB-PASS allowed; beat Crossroads without chickens
+ROCK ON! ISLAND: CLUB-PASS allowed; beat Jungle Rush
+ROCK ON! ISLAND: CLUB-PASS allowed; beat Jungle Rush without chickens
+ROCK ON! ISLAND: CLUB-PASS allowed; beat The Oasis
+ROCK ON! ISLAND: CLUB-PASS allowed; beat The Spiral
+ROCK ON! ISLAND: CLUB-PASS allowed; beat The Spiral without chickens
+ROCK ON! ISLAND: CLUB-PASS allowed; beat Underbrush
+ROCK ON! ISLAND: CLUB-PASS allowed; beat Wasteland
+ROCK ON! ISLAND: CLUB-PASS allowed; beat Wasteland without chickens
+ROCK ON! ISLAND: CLUB-PASS allowed; perfect Jungle Rush
+ROCK ON! ISLAND: CLUB-PASS allowed; perfect Terror Overhead
+ROCK ON! ISLAND: CLUB-PASS allowed; perfect Wasteland
+ROLE PLAYER: Level up all your characters 5 total times across Grimstone, Divers, Valbrace
+ROLE PLAYER: Level up all your characters 6 total times across Grimstone, Divers, Valbrace
+STAR WASPIR: Beat wave 1 with 1500+ points (before bonus) without touching any letters
+STAR WASPIR: Complete wave 1 without defeating either boss enemy
+STAR WASPIR: Reach Wave 2 with 20,000+ points using the Red ship
+STAR WASPIR: Reach Wave 2 with 20,000+ points using the Yellow ship
+STAR WASPIR: Score 125,000+ points using the {{waspir_ship}} ship
+STAR WASPIR: Score 20,000+ points using the {{waspir_ship}} ship
+THE BIG BELL RACE: Win 3 different races without collecting power-ups
+VAINGER: Beat 3 bosses
+VAINGER: Collect 3 items
+VAINGER: Collect 5 items
+VELGRESS: Hold 50 coins at once
+WALDORF'S JOURNEY: Beat the game without collecting any puffins
+WALDORF'S JOURNEY: Have 50 shells at once before entering the palace
+WALDORF'S JOURNEY: Have 50 shells at once while outside the palace
+WARPTANK: Beat any 9 sectors and speak to 3 NPCs
+WARPTANK: Beat sectors: {{warp_easy}}, {{warp_easy}}, {{warp_easy}}
+WARPTANK: SLIM-TANK allowed; Beat sectors: Axon, Sacrum, Dyad
+WARPTANK: SLIM-TANK allowed; Beat sectors: Azon, Soft, Kraft
+WARPTANK: SLIM-TANK allowed; Beat sectors: Crust, Bomb, and Orb
+WARPTANK: SLIM-TANK allowed; Beat sectors: Crust, Stare, and Form
+WARPTANK: SLIM-TANK allowed; Beat sectors: Crust, Stare, and Orb
+WARPTANK: SLIM-TANK allowed; Beat sectors: Deep, Axon, Dyad
+WARPTANK: SLIM-TANK allowed; Beat sectors: JR, Crust, Bomb
+WARPTANK: SLIM-TANK allowed; Beat sectors: Mazurka, Axon, Dyad
+WARPTANK: SLIM-TANK allowed; Beat sectors: Mazurka, Nugget, Dyad
+WARPTANK: SLIM-TANK allowed; Beat sectors: Mazurka, Nugget, Sacrum
+WARPTANK: SLIM-TANK allowed; Beat sectors: Nest, Axon, Sacrum
+WARPTANK: SLIM-TANK allowed; Beat sectors: Nugget, Axon, Sacrum
+WARPTANK: SLIM-TANK allowed; Beat sectors: Stare, Form, and Sore
+WARPTANK: SLIM-TANK allowed; Beat sectors: Stare, Orb, and Garl
+WARPTANK: SLIM-TANK allowed; Beat sectors: Stare, Orb, and Sore
+WARPTANK: SLIM-TANK allowed; Beat sectors: {{warp_easy}}, {{warp_easy}}, {{warp_easy}}
+WARPTANK: SLIM-TANK allowed; Beat sectors: {{warp_hard}}, {{warp_hard}}, {{warp_hard}}
+WARPTANK: SLIM-TANK allowed; Beat sectors: {{warp_med}}, {{warp_med}}, {{warp_med}}
+WARPTANK: SLIM-TANK allowed; beat sectors: Port, Shock, and Kraft
+WARPTANK: SLIM-TANK allowed; beat sectors: Port, Soft, and Riot
+WARPTANK: SLIM-TANK allowed; beat sectors: Shock, Soft, and Riot

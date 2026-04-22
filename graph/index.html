@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All games — UFO Bingo Stats</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="./graph.css" />
+  </head>
+  <body>
+    <main class="container graph-page">
+      <header>
+        <p class="nav-link">
+          <a href="../index.html">← Dashboard</a>
+        </p>
+        <h1>All games scatter</h1>
+        <p>
+          Each point is one of the 51 games in the dataset. Horizontal axis is
+          goal completion rate (0–100%). Vertical axis is fixed from 0 to 25 and
+          shows the average bingo <code>Order</code> when goals are completed
+          (lower means completed earlier in matches on average). Points are
+          labeled with the game name.
+        </p>
+      </header>
+
+      <section class="graph-wrap" aria-label="Scatter plot of games">
+        <svg
+          id="scatterSvg"
+          class="scatter-svg"
+          viewBox="0 0 1100 560"
+          role="img"
+          aria-labelledby="scatterTitle scatterDesc"
+        >
+          <title id="scatterTitle">Games by completion rate and average order</title>
+          <desc id="scatterDesc">
+            Scatter plot with completion percentage on the x-axis and average
+            order on the y-axis. One point per game.
+          </desc>
+        </svg>
+      </section>
+
+      <section id="graphStatus" class="status">Loading CSV data...</section>
+    </main>
+
+    <script src="./graph.js" defer></script>
+  </body>
+</html>

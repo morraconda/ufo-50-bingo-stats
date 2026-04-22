@@ -9,31 +9,52 @@
   <body>
     <main class="container">
       <header>
+        <p class="nav-link">
+          <a href="./graph/index.html">Scatter: all games (completion % vs avg order)</a>
+        </p>
         <h1>UFO Bingo Stats Dashboard</h1>
         <p>
-          *vibe-coded. please take the chance to leave now if you take issue with this. <br></br>
-          Choose either a player or a tier (one at a time), plus a game, to see
-          how often goals were completed, uncompleted, or completed by opponent.
+          <i><small>*almost entirely vibe-coded. feel free to not use this tool if you dont like that.</small></i><br></br>
         </p>
       </header>
 
       <section class="controls">
-        <label for="playerSelect">Player</label>
-        <div id="playerControl" class="choice-control">
-          <select id="playerSelect"></select>
-          <button id="playerUsingBadge" type="button" class="using-badge">Using</button>
+        <div class="control-row">
+          <label for="playerSelect">Player</label>
+          <div class="selector-group">
+            <select id="playerSelect"></select>
+            <button id="playerShowAll" type="button" class="using-badge">Show All</button>
+          </div>
         </div>
 
-        <label for="tierSelect">Tier</label>
-        <div id="tierControl" class="choice-control">
-          <select id="tierSelect"></select>
-          <button id="tierUsingBadge" type="button" class="using-badge">Using</button>
+        <div class="control-row">
+          <label for="tierSelect">Tier</label>
+          <div class="selector-group">
+            <select id="tierSelect"></select>
+            <button id="tierShowAll" type="button" class="using-badge">Show All</button>
+          </div>
         </div>
 
-        <label for="gameSelect">Game</label>
-        <select id="gameSelect"></select>
+        <div class="control-row">
+          <label for="gameSelect">Game</label>
+          <div class="selector-group">
+            <select id="gameSelect"></select>
+            <button id="gameShowAll" type="button" class="using-badge">Show All</button>
+          </div>
+        </div>
 
-        <p id="activeFilter" class="active-filter"></p>
+        <div class="control-row">
+          <label for="goalTypeSelect">Goal Type</label>
+          <div class="selector-group">
+            <select id="goalTypeSelect"></select>
+            <button id="goalTypeShowAll" type="button" class="using-badge">Show All</button>
+          </div>
+        </div>
+
+        <div id="summaryBox" class="summary-box">
+          <h4>Currently Showing</h4>
+          <p id="summaryText">Select a filter to view statistics</p>
+        </div>
       </section>
 
       <section class="results">
@@ -54,7 +75,14 @@
           </div>
 
           <section id="tierAverageSection" class="tier-average" hidden>
-            <h3 id="tierAverageTitle" class="bar-title"></h3>
+            <div class="average-header">
+              <h3 id="tierAverageTitle" class="bar-title"></h3>
+              <select id="averageModeSelect" class="average-mode-select">
+                <option value="tier">By Tier</option>
+                <option value="game">By Game</option>
+                <option value="difficulty">By Difficulty</option>
+              </select>
+            </div>
             <p id="tierAverageSample" class="tier-average-sample"></p>
             <div class="stacked-track">
               <div id="tierAvgBarByPlayer" class="stacked-segment by-player">0.0%</div>
@@ -68,6 +96,27 @@
             </div>
           </section>
         </div>
+      </section>
+
+      <section id="allBarsSection" class="all-bars-section" hidden>
+        <div class="all-bars-header">
+          <h2>All Bars</h2>
+          <div class="all-bars-controls">
+            <div id="allBarsSummary" class="all-bars-summary">
+              <p id="allBarsSummaryText">Select a filter to view all bars</p>
+            </div>
+            <div class="sort-controls">
+              <select id="sortBySelect" class="sort-select">
+                <option value="name">Name</option>
+                <option value="completed">Completed %</option>
+                <option value="uncompleted">Uncompleted %</option>
+                <option value="byOpponent">By Opponent %</option>
+              </select>
+              <button id="sortOrderBtn" type="button" class="sort-order-btn">Asc</button>
+            </div>
+          </div>
+        </div>
+        <div id="allBarsContainer" class="all-bars-container"></div>
       </section>
 
       <section id="status" class="status">Loading CSV data...</section>

@@ -1,0 +1,72 @@
+.graph-page code {
+  font-size: 0.9em;
+  color: #bae6fd;
+  background: #0f172a;
+  padding: 0.1em 0.35em;
+  border-radius: 0.25rem;
+}
+
+.graph-wrap {
+  margin: 1.5rem 0 1rem;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background: #1e293b;
+  overflow-x: auto;
+}
+
+.scatter-svg {
+  display: block;
+  width: 100%;
+  max-width: 1100px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.scatter-svg .point-label {
+  fill: #e2e8f0;
+  font-size: 9px;
+  font-family: Arial, Helvetica, sans-serif;
+  paint-order: stroke fill;
+  stroke: #0f172a;
+  stroke-width: 3px;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+.scatter-svg .axis-line {
+  stroke: #64748b;
+  stroke-width: 1.5;
+}
+
+.scatter-svg .axis-tick {
+  stroke: #475569;
+  stroke-width: 1;
+}
+
+.scatter-svg .axis-label {
+  fill: #94a3b8;
+  font-size: 13px;
+}
+
+.scatter-svg .axis-title {
+  fill: #cbd5e1;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.scatter-svg .grid-line {
+  stroke: #334155;
+  stroke-width: 1;
+}
+
+.scatter-svg .point {
+  fill: #38bdf8;
+  stroke: #0c4a6e;
+  stroke-width: 1.5;
+  cursor: default;
+}
+
+.scatter-svg .point:hover {
+  fill: #7dd3fc;
+  stroke: #0369a1;
+}
