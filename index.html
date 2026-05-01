@@ -24,6 +24,7 @@
           <label for="playerSelect">Player</label>
           <div class="selector-group">
             <select id="playerSelect"></select>
+            <button id="playerSwitchBtn" type="button" class="switch-btn"></button>
             <button id="playerShowAll" type="button" class="using-badge">Show All</button>
           </div>
         </div>
@@ -32,6 +33,7 @@
           <label for="tierSelect">Tier</label>
           <div class="selector-group">
             <select id="tierSelect"></select>
+            <button id="tierSwitchBtn" type="button" class="switch-btn"></button>
             <button id="tierShowAll" type="button" class="using-badge">Show All</button>
           </div>
         </div>
@@ -106,12 +108,19 @@
             <div id="allBarsSummary" class="all-bars-summary">
               <p id="allBarsSummaryText">Select a filter to view all bars</p>
             </div>
+            <div class="display-controls">
+              <label class="checkbox-label">
+                <input type="checkbox" id="showCompletionOnly">
+                Completion% only
+              </label>
+            </div>
             <div class="sort-controls">
               <select id="sortBySelect" class="sort-select">
                 <option value="name">Name</option>
                 <option value="completed">Completed %</option>
                 <option value="uncompleted">Uncompleted %</option>
                 <option value="byOpponent">By Opponent %</option>
+                <option value="goalCount">Goal count</option>
               </select>
               <button id="sortOrderBtn" type="button" class="sort-order-btn">Asc</button>
             </div>
@@ -120,9 +129,10 @@
         <div id="allBarsContainer" class="all-bars-container"></div>
       </section>
 
-      <section id="status" class="status">Loading CSV data...</section>
+      <section id="status" class="status">Loading data from Google Sheets...</section>
     </main>
 
+    <script src="./sheets-api.js" defer></script>
     <script src="./app.js" defer></script>
   </body>
 </html>

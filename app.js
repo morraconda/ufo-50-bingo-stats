@@ -1,10 +1,24 @@
-const CSV_PATH = "./UFO 50 Bingo S3 stats - Data.csv";
-const GOAL_TYPES_PATH = "./goal types.csv";
+
+// Game to image number mapping (copied from graph.js)
+const gameImageMap = {
+  "Barbuta": 1, "Bug Hunter": 2, "Ninpek": 3, "Paint Chase": 4, "Magic Garden": 5,
+  "Mortol": 6, "Velgress": 7, "Planet Zoldath": 8, "Attactics": 9, "Devilition": 10,
+  "Kick Club": 11, "Avianos": 12, "Mooncat": 13, "Bushido Ball": 14, "Block Koala": 15,
+  "Camouflage": 16, "Campanella": 17, "Golfaria": 18, "The Big Bell Race": 19, "Warptank": 20,
+  "Waldorf's Journey": 21, "Porgy": 22, "Onion Delivery": 23, "Caramel Caramel": 24, "Party House": 25,
+  "Hot Foot": 26, "Divers": 27, "Rail Heist": 28, "Vainger": 29, "Rock On! Island": 30,
+  "Pingolf": 31, "Mortol 2": 32, "Fist Hell": 33, "Overbold": 34, "Campanella 2": 35,
+  "Hyper Contender": 36, "Valbrace": 37, "Rakshasa": 38, "Star Waspir": 39, "Grimstone": 40,
+  "Lords of Diskonia": 41, "Night Manor": 42, "Elfazar's Hat": 43, "Pilot Quest": 44, "Mini and Max": 45,
+  "Combatants": 46, "Quibble Race": 47, "Seaside Drive": 48, "Campanella 3": 49, "Cyber Owls": 50, "General": 51
+};
 
 const playerShowAll = document.getElementById("playerShowAll");
 const tierShowAll = document.getElementById("tierShowAll");
 const gameShowAll = document.getElementById("gameShowAll");
 const goalTypeShowAll = document.getElementById("goalTypeShowAll");
+const playerSwitchBtn = document.getElementById("playerSwitchBtn");
+const tierSwitchBtn = document.getElementById("tierSwitchBtn");
 const playerSelect = document.getElementById("playerSelect");
 const tierSelect = document.getElementById("tierSelect");
 const gameSelect = document.getElementById("gameSelect");
@@ -18,6 +32,7 @@ const allBarsContainer = document.getElementById("allBarsContainer");
 const allBarsSummaryText = document.getElementById("allBarsSummaryText");
 const sortBySelect = document.getElementById("sortBySelect");
 const sortOrderBtn = document.getElementById("sortOrderBtn");
+const showCompletionOnly = document.getElementById("showCompletionOnly");
 
 const barByPlayer = document.getElementById("barByPlayer");
 const barByOther = document.getElementById("barByOther");
@@ -31,7 +46,7 @@ const tierAvgBarUncompleted = document.getElementById("tierAvgBarUncompleted");
 
 let rows = [];
 let goalTypes = new Map(); // Maps goal name to goal type
-let filterMode = "tier";
+let filterMode = "player";
 
 function parseCsv(text) {
   const lines = [];
@@ -143,7 +158,7 @@ function computeOutcomeStats(filteredRows, mode, selectedPlayer) {
   return {
     total,
     bySelectedPlayer,
-    byOtherPlayer,
+    byOther: byOtherPlayer,
     uncompleted,
     pctSelected: percent(bySelectedPlayer, total),
     pctOther: percent(byOtherPlayer, total),
@@ -231,15 +246,30 @@ function populateFilters(dataRows) {
     .join("");
   goalTypeSelect.insertAdjacentHTML("afterbegin", '<option value="All">All</option>');
 
+  playerSelect.value = sortedPlayers[0] || "";
   tierSelect.value = "All";
   gameSelect.value = "All";
   goalTypeSelect.value = "All";
 }
 
 function getGoalType(row) {
-  if (row.sourceGoal.toLowerCase() && goalTypes.has(row.sourceGoal.toLowerCase())) {
-    return goalTypes.get(row.sourceGoal.toLowerCase());
+  const sourceGoal = (row.sourceGoal || row.goal || "").trim().toLowerCase();
+  
+  // Try exact match first
+  if (sourceGoal && goalTypes.has(sourceGoal)) {
+    return goalTypes.get(sourceGoal);
   }
+  
+  // If no exact match, try partial matching for variations
+  if (sourceGoal) {
+    for (const [goalName, goalType] of goalTypes.entries()) {
+      // Check if one string contains the other
+      if (goalName.includes(sourceGoal) || sourceGoal.includes(goalName)) {
+        return goalType;
+      }
+    }
+  }
+  
   return null;
 }
 
@@ -289,6 +319,19 @@ function applyFilterModeUi() {
   playerSelect.classList.toggle("active-mode", usingPlayer);
   tierSelect.classList.toggle("active-mode", !usingPlayer);
 
+  // Update switch button text and highlighting
+  if (usingPlayer) {
+    playerSwitchBtn.textContent = "Selected";
+    playerSwitchBtn.classList.add("active");
+    tierSwitchBtn.textContent = "";
+    tierSwitchBtn.classList.remove("active");
+  } else {
+    playerSwitchBtn.textContent = "";
+    playerSwitchBtn.classList.remove("active");
+    tierSwitchBtn.textContent = "Selected";
+    tierSwitchBtn.classList.add("active");
+  }
+
   let summary = "";
   
   if (usingPlayer) {
@@ -327,6 +370,13 @@ function getAllFilterValues(type) {
     }
   } else if (type === "game") {
     values.add("All");
+    // Add all games from gameImageMap (including those without data)
+    for (const gameName of Object.keys(gameImageMap)) {
+      if (gameName !== "General") { // Skip General as it's handled separately
+        values.add(gameName);
+      }
+    }
+    // Also add any games found in data that might not be in the map
     for (const row of rows) {
       if (row.game) values.add(row.game.trim());
     }
@@ -338,9 +388,24 @@ function getAllFilterValues(type) {
     for (const row of rows) {
       // Only include types from the selected game
       if (matchesGame(row, selectedGame)) {
-        const rowType = getGoalType(row);
-        if (rowType) {
-          types.add(rowType);
+        // Also filter by current player/tier selection
+        let includeRow = false;
+        if (filterMode === "player") {
+          const selectedPlayer = playerSelect.value;
+          includeRow = normalize(row.player1) === normalize(selectedPlayer) ||
+                     normalize(row.player2) === normalize(selectedPlayer);
+        } else if (filterMode === "tier") {
+          const selectedTier = tierSelect.value;
+          includeRow = isAll(selectedTier) || normalize(row.tier) === normalize(selectedTier);
+        } else {
+          includeRow = true;
+        }
+        
+        if (includeRow) {
+          const rowType = getGoalType(row);
+          if (rowType) {
+            types.add(rowType);
+          }
         }
       }
     }
@@ -382,9 +447,11 @@ function getAllFilterValues(type) {
       const order = { "Easy": 0, "Medium": 1, "Hard": 2, "Very Hard": 3, "Gift": 4, "Gold": 5, "Cherry": 6, "Boss": 7, "Level": 8, "Theme": 9 };
       const aOrder = order[a] || 999;
       const bOrder = order[b] || 999;
-      if (aOrder !== 999 || bOrder !== 999) {
+      if (aOrder !== 999 && bOrder !== 999) {
         return aOrder - bOrder;
       }
+      if (aOrder !== 999) return -1;
+      if (bOrder !== 999) return 1;
     }
     return a.localeCompare(b);
   });
@@ -393,6 +460,7 @@ function getAllFilterValues(type) {
 function showAllBars(filterType) {
   const selectedGame = gameSelect.value;
   const selectedType = goalTypeSelect.value;
+  const sortBy = sortBySelect.value;
   const allValues = getAllFilterValues(filterType);
   
   allBarsContainer.innerHTML = "";
@@ -400,29 +468,66 @@ function showAllBars(filterType) {
   // Update summary text
   let summaryText = "";
   if (filterType === "player") {
-    summaryText = isAll(selectedGame)
-      ? isAll(selectedType)
-        ? "Showing all players across all games and all goal types"
-        : `Showing all players across all games for ${selectedType} goals`
-      : isAll(selectedType)
-        ? `Showing all players in ${selectedGame} across all goal types`
-        : `Showing all players in ${selectedGame} for ${selectedType} goals`;
+    if (filterMode === "tier") {
+      const selectedTier = tierSelect.value;
+      summaryText = isAll(selectedGame)
+        ? isAll(selectedType)
+          ? `Showing all players in tier ${selectedTier} across all games and all goal types`
+          : `Showing all players in tier ${selectedTier} across all games for ${selectedType} goals`
+        : isAll(selectedType)
+          ? `Showing all players in tier ${selectedTier} in ${selectedGame} across all goal types`
+          : `Showing all players in tier ${selectedTier} in ${selectedGame} for ${selectedType} goals`;
+    } else {
+      summaryText = isAll(selectedGame)
+        ? isAll(selectedType)
+          ? "Showing all players across all games and all goal types"
+          : `Showing all players across all games for ${selectedType} goals`
+        : isAll(selectedType)
+          ? `Showing all players in ${selectedGame} across all goal types`
+          : `Showing all players in ${selectedGame} for ${selectedType} goals`;
+    }
   } else if (filterType === "tier") {
-    summaryText = isAll(selectedGame)
-      ? isAll(selectedType)
-        ? "Showing all tiers across all games and all goal types"
-        : `Showing all tiers across all games for ${selectedType} goals`
-      : isAll(selectedType)
-        ? `Showing all tiers in ${selectedGame} across all goal types`
-        : `Showing all tiers in ${selectedGame} for ${selectedType} goals`;
+    if (filterMode === "player") {
+      const selectedPlayer = playerSelect.value;
+      summaryText = isAll(selectedGame)
+        ? isAll(selectedType)
+          ? `Showing all tiers for ${selectedPlayer} across all games and all goal types`
+          : `Showing all tiers for ${selectedPlayer} across all games for ${selectedType} goals`
+        : isAll(selectedType)
+          ? `Showing all tiers for ${selectedPlayer} in ${selectedGame} across all goal types`
+          : `Showing all tiers for ${selectedPlayer} in ${selectedGame} for ${selectedType} goals`;
+    } else {
+      summaryText = isAll(selectedGame)
+        ? isAll(selectedType)
+          ? "Showing all tiers across all games and all goal types"
+          : `Showing all tiers across all games for ${selectedType} goals`
+        : isAll(selectedType)
+          ? `Showing all tiers in ${selectedGame} across all goal types`
+          : `Showing all tiers in ${selectedGame} for ${selectedType} goals`;
+    }
   } else if (filterType === "game") {
-    summaryText = isAll(selectedType)
-      ? "Showing all games across all goal types"
-      : `Showing all games for ${selectedType} goals`;
+    if (filterMode === "player") {
+      const selectedPlayer = playerSelect.value;
+      summaryText = isAll(selectedType)
+        ? `Showing all games for ${selectedPlayer} across all goal types`
+        : `Showing all games for ${selectedPlayer} for ${selectedType} goals`;
+    } else {
+      const selectedTier = tierSelect.value;
+      summaryText = isAll(selectedType)
+        ? `Showing all games in tier ${selectedTier} across all goal types`
+        : `Showing all games in tier ${selectedTier} for ${selectedType} goals`;
+    }
   } else if (filterType === "goalType") {
-    summaryText = isAll(selectedGame)
-      ? "Showing all goal types across all games"
-      : `Showing all goal types in ${selectedGame}`;
+    if (filterMode === "player") {
+      const selectedPlayer = playerSelect.value;
+      summaryText = isAll(selectedGame)
+        ? `Showing all goal types for ${selectedPlayer} across all games`
+        : `Showing all goal types for ${selectedPlayer} in ${selectedGame}`;
+    } else {
+      summaryText = isAll(selectedGame)
+        ? "Showing all goal types across all games"
+        : `Showing all goal types in ${selectedGame}`;
+    }
   }
   
   allBarsSummaryText.textContent = summaryText;
@@ -438,7 +543,24 @@ function showAllBars(filterType) {
         
         const rowType = getGoalType(row);
         const sameType = isAll(selectedType) || rowType === selectedType;
-        return sameType;
+        if (!sameType) return false;
+        
+        // Respect current player/tier selections
+        if (filterMode === "player") {
+          const selectedPlayer = playerSelect.value;
+          const playerInMatch =
+            normalize(row.player1) === normalize(selectedPlayer) ||
+            normalize(row.player2) === normalize(selectedPlayer);
+          return playerInMatch;
+        } else if (filterMode === "tier") {
+          const selectedTier = tierSelect.value;
+          if (isAll(selectedTier)) {
+            return true;
+          }
+          return normalize(row.tier) === normalize(selectedTier);
+        }
+        
+        return true;
       }
       
       // For goal type filter type, show all rows for that type
@@ -448,7 +570,24 @@ function showAllBars(filterType) {
         if (!sameType) return false;
         
         const sameGame = matchesGame(row, selectedGame);
-        return sameGame;
+        if (!sameGame) return false;
+        
+        // Respect current player/tier selections
+        if (filterMode === "player") {
+          const selectedPlayer = playerSelect.value;
+          const playerInMatch =
+            normalize(row.player1) === normalize(selectedPlayer) ||
+            normalize(row.player2) === normalize(selectedPlayer);
+          return playerInMatch;
+        } else if (filterMode === "tier") {
+          const selectedTier = tierSelect.value;
+          if (isAll(selectedTier)) {
+            return true;
+          }
+          return normalize(row.tier) === normalize(selectedTier);
+        }
+        
+        return true;
       }
       
       // Original logic for player and tier
@@ -460,6 +599,10 @@ function showAllBars(filterType) {
       if (!sameType) return false;
 
       if (filterType === "player") {
+        if (isAll(value)) {
+          // For "All" players, include all rows that match game and type criteria
+          return true;
+        }
         const playerInMatch =
           normalize(row.player1) === normalize(value) ||
           normalize(row.player2) === normalize(value);
@@ -472,31 +615,47 @@ function showAllBars(filterType) {
       return normalize(row.tier) === normalize(value);
     });
 
-    const stats = computeOutcomeStats(filtered, filterType === "player" ? "player" : "tier", filterType === "player" ? value : "");
-    
-    if (stats.total > 0) {
-      let displayName = value;
-      if (filterType === "tier") {
-        displayName = `Tier ${value}`;
+    // Debug: Check filtered array before computing stats
+    if (sortBy === "goalCount") {
+      console.log('DEBUG: Filtered array for value:', value, 'filterType:', filterType);
+      console.log('Filtered array length:', filtered.length);
+      console.log('Filtered array type:', typeof filtered);
+      console.log('Is array?', Array.isArray(filtered));
+      if (filtered.length > 0) {
+        console.log('First few filtered items:', filtered.slice(0, 3));
       }
-      
-      // Truncate name to 15 characters for consistent sizing
-      let truncatedName = displayName;
-      if (displayName.length > 15) {
-        truncatedName = displayName.substring(0, 15);
-      }
-      
-      barData.push({
-        value: value,
-        displayName: displayName,
-        truncatedName: truncatedName,
-        stats: stats
-      });
     }
+    
+    const stats = computeOutcomeStats(filtered, filterMode, filterMode === "player" ? playerSelect.value : tierSelect.value);
+    
+    // Debug: Check for fractional totals
+    if (sortBy === "goalCount" && stats.total !== Math.floor(stats.total)) {
+      console.log('DEBUG: Fractional total detected:', stats.total, 'for value:', value, 'filterType:', filterType);
+      console.log('Filtered rows length:', filtered.length);
+      console.log('Stats object:', stats);
+    }
+    
+    let displayName = value;
+    if (filterType === "tier") {
+      displayName = `Tier ${value}`;
+    }
+    
+    // Truncate name to 15 characters for consistent sizing
+    let truncatedName = displayName;
+    if (displayName.length > 15) {
+      truncatedName = displayName.substring(0, 15);
+    }
+    
+    barData.push({
+      value: value,
+      displayName: displayName,
+      truncatedName: truncatedName,
+      stats: stats,
+      hasData: stats.total > 0
+    });
   });
   
   // Sort the bar data
-  const sortBy = sortBySelect.value;
   const sortOrder = sortOrderBtn.textContent;
   
   barData.sort((a, b) => {
@@ -510,6 +669,8 @@ function showAllBars(filterType) {
       comparison = a.stats.pctNone - b.stats.pctNone;
     } else if (sortBy === "byOpponent") {
       comparison = a.stats.pctOther - b.stats.pctOther;
+    } else if (sortBy === "goalCount") {
+      comparison = a.stats.total - b.stats.total;
     }
     
     return sortOrder === "Desc" ? -comparison : comparison;
@@ -522,33 +683,96 @@ function showAllBars(filterType) {
     
     const title = document.createElement("h3");
     title.className = "all-bar-title";
-    title.textContent = data.truncatedName;
-    title.title = data.displayName; // Add tooltip with full name
     
-    const track = document.createElement("div");
-    track.className = "stacked-track";
+    // Use game image for game filter type (but not for "All")
+    if (filterType === "game" && !isAll(data.value)) {
+      const img = document.createElement("img");
+      const imageNumber = gameImageMap[data.value] || "1"; // Fallback to 1.png
+      img.src = `./graph/disks/${imageNumber}.png`;
+      img.alt = data.displayName;
+      img.className = "game-icon";
+      img.title = data.displayName; // Tooltip with full name
+      title.appendChild(img);
+    } else {
+      title.textContent = data.truncatedName;
+      title.title = data.displayName; // Add tooltip with full name
+    }
     
-    const byPlayerSeg = document.createElement("div");
-    byPlayerSeg.className = "stacked-segment by-player";
-    byPlayerSeg.style.width = `${data.stats.pctSelected}%`;
-    byPlayerSeg.textContent = data.stats.pctSelected <= 0 ? "" : `${data.stats.pctSelected.toFixed(1)}%`;
-    
-    const uncompletedSeg = document.createElement("div");
-    uncompletedSeg.className = "stacked-segment uncompleted";
-    uncompletedSeg.style.width = `${data.stats.pctNone}%`;
-    uncompletedSeg.textContent = data.stats.pctNone <= 0 ? "" : `${data.stats.pctNone.toFixed(1)}%`;
-    
-    const byOtherSeg = document.createElement("div");
-    byOtherSeg.className = "stacked-segment by-other";
-    byOtherSeg.style.width = `${data.stats.pctOther}%`;
-    byOtherSeg.textContent = data.stats.pctOther <= 0 ? "" : `${data.stats.pctOther.toFixed(1)}%`;
-    
-    track.appendChild(byPlayerSeg);
-    track.appendChild(uncompletedSeg);
-    track.appendChild(byOtherSeg);
+    // Add total count on the left for all sorts
+    const totalCount = document.createElement("div");
+    totalCount.className = "total-count";
+    totalCount.textContent = data.stats.total;
+    barContainer.appendChild(totalCount);
     
     barContainer.appendChild(title);
-    barContainer.appendChild(track);
+    
+    // Check if this item has no data
+    if (!data.hasData) {
+      // For games with no data, show just the "0" count and no bar
+      const emptyTrack = document.createElement("div");
+      emptyTrack.className = "empty-track";
+      emptyTrack.textContent = "No data";
+      barContainer.appendChild(emptyTrack);
+    } else {
+      // Games with data get a normal track
+      const track = document.createElement("div");
+      
+      if (showCompletionOnly.checked) {
+        // Show completion + uncompleted bar (2 segments)
+        track.className = "completion-track";
+      
+        // Combine green (player) and red (opponent) for completion view
+        let completedPercentage = data.stats.pctSelected + data.stats.pctOther;
+        
+        const completionBar = document.createElement("div");
+        completionBar.className = "completion-bar";
+        completionBar.style.width = `${completedPercentage}%`;
+        completionBar.textContent = completedPercentage <= 0 ? "" : `${completedPercentage.toFixed(1)}%`;
+        
+        const uncompletedBar = document.createElement("div");
+        uncompletedBar.className = "completion-uncompleted";
+        uncompletedBar.style.width = `${data.stats.pctNone}%`;
+        uncompletedBar.textContent = data.stats.pctNone <= 0 ? "" : `${data.stats.pctNone.toFixed(1)}%`;
+        
+        // Debug: Log what we're actually setting for completion view
+        console.log('DEBUG: Completion bar display for', data.displayName);
+        console.log('  completedPercentage:', completedPercentage, '->', completionBar.textContent);
+        console.log('  pctNone:', data.stats.pctNone, '->', uncompletedBar.textContent);
+        
+        track.appendChild(completionBar);
+        track.appendChild(uncompletedBar);
+      } else {
+        // Show 3-segment stacked bar
+        track.className = "stacked-track";
+        
+        const byPlayerSeg = document.createElement("div");
+        byPlayerSeg.className = "stacked-segment by-player";
+        byPlayerSeg.style.width = `${data.stats.pctSelected}%`;
+        byPlayerSeg.textContent = data.stats.pctSelected <= 0 ? "" : `${data.stats.pctSelected.toFixed(1)}%`;
+        
+        const uncompletedSeg = document.createElement("div");
+        uncompletedSeg.className = "stacked-segment uncompleted";
+        uncompletedSeg.style.width = `${data.stats.pctNone}%`;
+        uncompletedSeg.textContent = data.stats.pctNone <= 0 ? "" : `${data.stats.pctNone.toFixed(1)}%`;
+        
+        const byOtherSeg = document.createElement("div");
+        byOtherSeg.className = "stacked-segment by-other";
+        byOtherSeg.style.width = `${data.stats.pctOther}%`;
+        byOtherSeg.textContent = data.stats.pctOther <= 0 ? "" : `${data.stats.pctOther.toFixed(1)}%`;
+        
+        // Debug: Log what we're actually setting
+        console.log('DEBUG: Bar display for', data.displayName);
+        console.log('  byPlayer:', data.stats.pctSelected, '->', byPlayerSeg.textContent);
+        console.log('  uncompleted:', data.stats.pctNone, '->', uncompletedSeg.textContent);
+        console.log('  byOther:', data.stats.pctOther, '->', byOtherSeg.textContent);
+        
+        track.appendChild(byPlayerSeg);
+        track.appendChild(uncompletedSeg);
+        track.appendChild(byOtherSeg);
+      }
+      
+      barContainer.appendChild(track);
+    }
     
     allBarsContainer.appendChild(barContainer);
   });
@@ -577,7 +801,7 @@ function updateDashboard() {
       return playerInMatch;
     }
 
-    if (isAll(selectedTier)) {
+    if (isAll(selectedTier) || isAll(selectedPlayer)) {
       return true;
     }
     return normalize(row.tier) === normalize(selectedTier);
@@ -742,57 +966,14 @@ function updateDashboard() {
 
 async function main() {
   try {
-    // Load goal types
-    const goalTypesResponse = await fetch(GOAL_TYPES_PATH);
-    if (goalTypesResponse.ok) {
-      const goalTypesCsvText = await goalTypesResponse.text();
-      const goalTypesTable = parseCsv(goalTypesCsvText);
-      const goalTypesHeaders = goalTypesTable[0];
-      const goalTypesRecords = goalTypesTable.slice(1);
-
-      const goalIndex = goalTypesHeaders.indexOf("Goal");
-      const typeIndex = goalTypesHeaders.indexOf("Type");
-
-      if (goalIndex >= 0 && typeIndex >= 0) {
-        for (const record of goalTypesRecords) {
-          const goal = record[goalIndex] || "";
-          const type = record[typeIndex] || "";
-          if (goal) {
-            goalTypes.set(goal.trim(), type.trim());
-          }
-        }
-      }
-    }
-
-    const response = await fetch(CSV_PATH);
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
-    }
-
-    const csvText = await response.text();
-    const table = parseCsv(csvText);
-    const headers = table[0];
-    const records = table.slice(1);
-
-    const index = {
-      tier: headers.indexOf("Tier"),
-      player1: headers.indexOf("Player 1"),
-      player2: headers.indexOf("Player 2"),
-      completedBy: headers.indexOf("Completed by"),
-      game: headers.indexOf("Game"),
-      goal: headers.indexOf("Goal"),
-      sourceGoal: headers.indexOf("Source goal"),
-    };
-
-    rows = records.map((record) => ({
-      tier: record[index.tier] || "",
-      player1: record[index.player1] || "",
-      player2: record[index.player2] || "",
-      completedBy: record[index.completedBy] || "",
-      game: record[index.game] || "",
-      goal: record[index.goal] || "",
-      sourceGoal: record[index.sourceGoal] || "",
-    }));
+    // Load data from Google Sheets
+    setStatus("Connecting to Google Sheets...");
+    
+    const { playerData, goalTypes: loadedGoalTypes } = await window.SheetsAPI.loadPlayerAndGoalData();
+    
+    // Update global variables
+    rows = playerData;
+    goalTypes = loadedGoalTypes;
 
     populateFilters(rows);
     applyFilterModeUi();
@@ -800,28 +981,44 @@ async function main() {
     updateDashboard();
 
     playerSelect.addEventListener("change", () => {
-      filterMode = "player";
+      // Update tier to show most common tier for selected player, but don't switch mode
       const playerTier = getMostCommonTierForPlayer(playerSelect.value);
       if (playerTier) {
         tierSelect.value = playerTier;
       }
+      // Make player selector active when changing player
+      playerSelect.classList.add("active-mode");
+      tierSelect.classList.remove("active-mode");
+      applyFilterModeUi();
       updateDashboard();
     });
-    playerSelect.addEventListener("click", (e) => {
-      if (filterMode === "player" && e.target === playerSelect) {
-        // If already in player mode and clicking player select, switch to tier mode
-        filterMode = "tier";
+    tierSelect.addEventListener("change", () => {
+      // Force tier mode when changing tier
+      filterMode = "tier";
+      // Make tier selector active when changing tier
+      tierSelect.classList.add("active-mode");
+      playerSelect.classList.remove("active-mode");
+      applyFilterModeUi();
+      updateDashboard();
+    });
+        
+    // Switch button click handlers - clicking empty button switches mode
+    playerSwitchBtn.addEventListener("click", () => {
+      console.log('Player switch button clicked, current mode:', filterMode);
+      if (filterMode === "tier") {
+        // If in tier mode, clicking empty player switch button switches to player mode
+        filterMode = "player";
+        applyFilterModeUi();
         updateDashboard();
       }
     });
-    tierSelect.addEventListener("change", () => {
-      filterMode = "tier";
-      updateDashboard();
-    });
-    tierSelect.addEventListener("click", (e) => {
-      if (filterMode === "tier" && e.target === tierSelect) {
-        // If already in tier mode and clicking tier select, switch to player mode
-        filterMode = "player";
+    
+    tierSwitchBtn.addEventListener("click", () => {
+      console.log('Tier switch button clicked, current mode:', filterMode);
+      if (filterMode === "player") {
+        // If in player mode, clicking empty tier switch button switches to tier mode
+        filterMode = "tier";
+        applyFilterModeUi();
         updateDashboard();
       }
     });
@@ -857,6 +1054,7 @@ async function main() {
       }
     });
     tierShowAll.addEventListener("click", () => {
+      console.log('Tier switch button clicked, current mode:', filterMode);
       if (tierShowAll.classList.contains("active")) {
         tierShowAll.classList.remove("active");
         allBarsSection.hidden = true;
@@ -887,6 +1085,17 @@ async function main() {
       }
     });
 
+    // Display mode checkbox event listener
+    showCompletionOnly.addEventListener("change", () => {
+      if (!allBarsSection.hidden) {
+        const activeFilter = document.querySelector('.using-badge.active');
+        if (activeFilter) {
+          const filterType = activeFilter.id.replace('ShowAll', '').toLowerCase();
+          showAllBars(filterType);
+        }
+      }
+    });
+
     // Sorting controls event listeners
     sortBySelect.addEventListener("change", () => {
       if (!allBarsSection.hidden) {
@@ -913,9 +1122,9 @@ async function main() {
       }
     });
 
-    setStatus("Data loaded.");
+    setStatus("Data loaded from Google Sheets.");
   } catch (error) {
-    setStatus(`Could not load CSV data: ${error.message}`, true);
+    setStatus(`Could not load data from Google Sheets: ${error.message}`, true);
   }
 }
 

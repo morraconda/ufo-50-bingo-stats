@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Sheets Test</title>
+</head>
+<body>
+    <h1>Google Sheets API Test</h1>
+    <div id="status">Testing Google Sheets connection...</div>
+    <div id="result"></div>
+    
+    <script src="./sheets-api.js"></script>
+    <script>
+        async function testSheets() {
+            const statusEl = document.getElementById('status');
+            const resultEl = document.getElementById('result');
+            
+            try {
+                statusEl.textContent = 'Loading data from Google Sheets...';
+                const data = await window.SheetsAPI.loadPlayerAndGoalData();
+                
+                statusEl.textContent = 'Success!';
+                resultEl.innerHTML = `
+                    <h2>Data Loaded Successfully</h2>
+                    <p>Player data rows: ${data.playerData.length}</p>
+                    <p>Goal types: ${data.goalTypes.size}</p>
+                    <h3>Sample Data:</h3>
+                    <pre>${JSON.stringify(data.playerData.slice(0, 3), null, 2)}</pre>
+                    <h3>Goal Types:</h3>
+                    <pre>${JSON.stringify(Array.from(data.goalTypes.entries()).slice(0, 10), null, 2)}</pre>
+                `;
+            } catch (error) {
+                statusEl.textContent = 'Error!';
+                resultEl.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+                console.error('Test error:', error);
+            }
+        }
+        
+        testSheets();
+    </script>
+</body>
+</html>
