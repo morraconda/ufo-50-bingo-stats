@@ -66,4 +66,4 @@ jsdom cannot execute `<script type="module">`, so for the modular pages set `glo
 
 ## Note
 
-`README.md` is out of date — it describes the pre-Google-Sheets single-page version and a local CSV that no longer exists. `test.py`, `update_filter.js`, `test-sheets.html` and `debug/` are one-off scratch files, not part of the app.
+`README.md` is user-facing (links the live site, explains the UI) rather than a dev guide — this file is the dev reference. `test.py`, `update_filter.js`, `test-sheets.html` and `debug/` are one-off scratch files, not part of the app.
