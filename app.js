@@ -7,9 +7,9 @@ const gameImageMap = {
   "Camouflage": 16, "Campanella": 17, "Golfaria": 18, "The Big Bell Race": 19, "Warptank": 20,
   "Waldorf's Journey": 21, "Porgy": 22, "Onion Delivery": 23, "Caramel Caramel": 24, "Party House": 25,
   "Hot Foot": 26, "Divers": 27, "Rail Heist": 28, "Vainger": 29, "Rock On! Island": 30,
-  "Pingolf": 31, "Mortol 2": 32, "Fist Hell": 33, "Overbold": 34, "Campanella 2": 35,
+  "Pingolf": 31, "Mortol II": 32, "Fist Hell": 33, "Overbold": 34, "Campanella 2": 35,
   "Hyper Contender": 36, "Valbrace": 37, "Rakshasa": 38, "Star Waspir": 39, "Grimstone": 40,
-  "Lords of Diskonia": 41, "Night Manor": 42, "Elfazar's Hat": 43, "Pilot Quest": 44, "Mini and Max": 45,
+  "Lords of Diskonia": 41, "Night Manor": 42, "Elfazar's Hat": 43, "Pilot Quest": 44, "Mini & Max": 45,
   "Combatants": 46, "Quibble Race": 47, "Seaside Drive": 48, "Campanella 3": 49, "Cyber Owls": 50, "General": 51
 };
 
@@ -46,7 +46,7 @@ const tierAvgBarUncompleted = document.getElementById("tierAvgBarUncompleted");
 
 let rows = [];
 let goalTypes = new Map(); // Maps goal name to goal type
-let filterMode = "player";
+let filterMode = "tier";
 
 function parseCsv(text) {
   const lines = [];
@@ -664,9 +664,13 @@ function showAllBars(filterType) {
     if (sortBy === "name") {
       comparison = a.displayName.localeCompare(b.displayName);
     } else if (sortBy === "completed") {
-      comparison = a.stats.pctSelected - b.stats.pctSelected;
+      // In completion-only view the bar shows completion by either player, so sort by that
+      comparison = showCompletionOnly.checked
+        ? (a.stats.pctSelected + a.stats.pctOther) - (b.stats.pctSelected + b.stats.pctOther)
+        : a.stats.pctSelected - b.stats.pctSelected;
     } else if (sortBy === "uncompleted") {
-      comparison = a.stats.pctNone - b.stats.pctNone;
+      // Reversed so "Asc" keeps agreeing with Completed % (worst-completion games first)
+      comparison = b.stats.pctNone - a.stats.pctNone;
     } else if (sortBy === "byOpponent") {
       comparison = a.stats.pctOther - b.stats.pctOther;
     } else if (sortBy === "goalCount") {
@@ -716,61 +720,31 @@ function showAllBars(filterType) {
     } else {
       // Games with data get a normal track
       const track = document.createElement("div");
-      
+      track.className = "stacked-track";
+
+      const makeSegment = (modifier, pct) => {
+        const seg = document.createElement("div");
+        seg.className = `stacked-segment ${modifier}`;
+        seg.style.width = `${pct}%`;
+        seg.textContent = pct <= 0 ? "" : `${pct.toFixed(1)}%`;
+        return seg;
+      };
+
+      const byPlayerSeg = makeSegment("by-player", data.stats.pctSelected);
+      const byOtherSeg = makeSegment("by-other", data.stats.pctOther);
+      const uncompletedSeg = makeSegment("uncompleted", data.stats.pctNone);
+
       if (showCompletionOnly.checked) {
-        // Show completion + uncompleted bar (2 segments)
-        track.className = "completion-track";
-      
-        // Combine green (player) and red (opponent) for completion view
-        let completedPercentage = data.stats.pctSelected + data.stats.pctOther;
-        
-        const completionBar = document.createElement("div");
-        completionBar.className = "completion-bar";
-        completionBar.style.width = `${completedPercentage}%`;
-        completionBar.textContent = completedPercentage <= 0 ? "" : `${completedPercentage.toFixed(1)}%`;
-        
-        const uncompletedBar = document.createElement("div");
-        uncompletedBar.className = "completion-uncompleted";
-        uncompletedBar.style.width = `${data.stats.pctNone}%`;
-        uncompletedBar.textContent = data.stats.pctNone <= 0 ? "" : `${data.stats.pctNone.toFixed(1)}%`;
-        
-        // Debug: Log what we're actually setting for completion view
-        console.log('DEBUG: Completion bar display for', data.displayName);
-        console.log('  completedPercentage:', completedPercentage, '->', completionBar.textContent);
-        console.log('  pctNone:', data.stats.pctNone, '->', uncompletedBar.textContent);
-        
-        track.appendChild(completionBar);
-        track.appendChild(uncompletedBar);
+        // Group both completed shares on the left so bars compare by total completion
+        track.appendChild(byPlayerSeg);
+        track.appendChild(byOtherSeg);
+        track.appendChild(uncompletedSeg);
       } else {
-        // Show 3-segment stacked bar
-        track.className = "stacked-track";
-        
-        const byPlayerSeg = document.createElement("div");
-        byPlayerSeg.className = "stacked-segment by-player";
-        byPlayerSeg.style.width = `${data.stats.pctSelected}%`;
-        byPlayerSeg.textContent = data.stats.pctSelected <= 0 ? "" : `${data.stats.pctSelected.toFixed(1)}%`;
-        
-        const uncompletedSeg = document.createElement("div");
-        uncompletedSeg.className = "stacked-segment uncompleted";
-        uncompletedSeg.style.width = `${data.stats.pctNone}%`;
-        uncompletedSeg.textContent = data.stats.pctNone <= 0 ? "" : `${data.stats.pctNone.toFixed(1)}%`;
-        
-        const byOtherSeg = document.createElement("div");
-        byOtherSeg.className = "stacked-segment by-other";
-        byOtherSeg.style.width = `${data.stats.pctOther}%`;
-        byOtherSeg.textContent = data.stats.pctOther <= 0 ? "" : `${data.stats.pctOther.toFixed(1)}%`;
-        
-        // Debug: Log what we're actually setting
-        console.log('DEBUG: Bar display for', data.displayName);
-        console.log('  byPlayer:', data.stats.pctSelected, '->', byPlayerSeg.textContent);
-        console.log('  uncompleted:', data.stats.pctNone, '->', uncompletedSeg.textContent);
-        console.log('  byOther:', data.stats.pctOther, '->', byOtherSeg.textContent);
-        
         track.appendChild(byPlayerSeg);
         track.appendChild(uncompletedSeg);
         track.appendChild(byOtherSeg);
       }
-      
+
       barContainer.appendChild(track);
     }
     

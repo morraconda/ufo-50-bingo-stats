@@ -3,28 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UFO Bingo Stats Dashboard - Season 4</title>
-    <script>
-      window.SEASON_CONFIG = { name: "Season 4", spreadsheetId: "10OuFdCtSeHEgkTwJyrQmAS_wUt4BE7E-sbVBA3eDDqA" };
-    </script>
+    <title>UFO Bingo Stats Dashboard - Non-League</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <main class="container">
       <header>
         <div class="season-tabs">
-          <a class="season-tab active" href="./index.html">Season 4</a>
+          <a class="season-tab" href="./index.html">Season 4</a>
           <a class="season-tab" href="./season3.html">Season 3</a>
           <a class="season-tab" href="./season2.html">Season 2</a>
           <a class="season-tab" href="./season1.html">Season 1</a>
-          <a class="season-tab" href="./nonleague.html">Non-League</a>
+          <a class="season-tab active" href="./nonleague.html">Non-League</a>
           <a class="season-tab legacy" href="./season3-legacy.html">Season 3 (legacy)</a>
         </div>
         <p class="nav-link">
           <a href="./graph/index.html">Scatter: all games (completion % vs avg order)</a>
         </p>
-        <h1>UFO Bingo Stats Dashboard - Season 4</h1>
+        <h1>UFO Bingo Stats Dashboard - Non-League</h1>
         <p><small>Held together with blu tack and duct tape. If you're getting a CSV parse error, you need to clear cookies. If a bar stops showing, pressing the button again may make it show (or it's broken.)</small></p>
+        <p><small>Non-league cards don't record who sat down to play, so a card counts as yours if you ticked at least one goal on it.</small></p>
         <p>
           <i><small>*almost entirely vibe-coded. feel free to not use this tool if you dont like that.</small></i><br></br>
         </p>
@@ -41,11 +39,12 @@
         </div>
 
         <div class="control-row">
-          <label for="tierSelect">Tier</label>
-          <div class="selector-group">
-            <select id="tierSelect"></select>
-            <button id="tierSwitchBtn" type="button" class="switch-btn"></button>
-            <button id="tierShowAll" type="button" class="using-badge">Show All</button>
+          <label for="startDateInput">Period</label>
+          <div class="selector-group with-date">
+            <input type="date" id="startDateInput" class="date-input" />
+            <select id="periodSelect"></select>
+            <button id="periodSwitchBtn" type="button" class="switch-btn"></button>
+            <button id="periodShowAll" type="button" class="using-badge">Show All</button>
           </div>
         </div>
 
@@ -84,7 +83,7 @@
             <div class="average-header">
               <h3 id="tierAverageTitle" class="bar-title"></h3>
               <select id="averageModeSelect" class="average-mode-select">
-                <option value="tier">By Tier</option>
+                <option value="period">By Period</option>
                 <option value="game">By Game</option>
               </select>
             </div>
@@ -134,6 +133,6 @@
       <section id="status" class="status">Loading data from Google Sheets...</section>
     </main>
 
-    <script type="module" src="./season-app.js"></script>
+    <script type="module" src="./nonleague-app.js"></script>
   </body>
 </html>

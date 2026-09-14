@@ -1,4 +1,5 @@
-const CSV_PATH = "../UFO 50 Bingo S3 stats - Data.csv";
+const SPREADSHEET_ID = "12QxCeOhHnmnoRQhiSmD56dPSl3rNnw2mfDt7qScz9Ds"; // Season 3
+const CSV_PATH = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/export?format=csv&gid=0`;
 
 const statusEl = document.getElementById("graphStatus");
 const svg = document.getElementById("scatterSvg");
@@ -11,9 +12,9 @@ const gameToId = {
   "Camouflage": 16, "Campanella": 17, "Golfaria": 18, "The Big Bell Race": 19, "Warptank": 20,
   "Waldorf's Journey": 21, "Porgy": 22, "Onion Delivery": 23, "Caramel Caramel": 24, "Party House": 25,
   "Hot Foot": 26, "Divers": 27, "Rail Heist": 28, "Vainger": 29, "Rock On! Island": 30,
-  "Pingolf": 31, "Mortol 2": 32, "Fist Hell": 33, "Overbold": 34, "Campanella 2": 35,
+  "Pingolf": 31, "Mortol II": 32, "Fist Hell": 33, "Overbold": 34, "Campanella 2": 35,
   "Hyper Contender": 36, "Valbrace": 37, "Rakshasa": 38, "Star Waspir": 39, "Grimstone": 40,
-  "Lords of Diskonia": 41, "Night Manor": 42, "Elfazar's Hat": 43, "Pilot Quest": 44, "Mini and Max": 45,
+  "Lords of Diskonia": 41, "Night Manor": 42, "Elfazar's Hat": 43, "Pilot Quest": 44, "Mini & Max": 45,
   "Combatants": 46, "Quibble Race": 47, "Seaside Drive": 48, "Campanella 3": 49, "Cyber Owls": 50, "General": 51
 };
 
@@ -203,30 +204,77 @@ function renderScatter(points) {
   const pointsGroup = el("g", { class: "points-layer" });
   const labelsGroup = el("g", { class: "labels-layer" });
 
+  const imgSize = 44;
+
+  // Compute exact positions first so overlapping disk icons can be nudged apart.
+  const displayPoints = [];
   for (const p of points) {
     if (p.avgOrder === null) continue;
-    console.log(p.game, p.completionPct, p.avgOrder);
     const cx = xScale(Math.min(xMax, Math.max(xMin, p.completionPct)));
     const plotY = Math.min(yMax, Math.max(yMin, p.avgOrder));
     const cy = yScale(plotY);
+    displayPoints.push({ p, cx, cy, dx: cx, dy: cy });
+  }
+
+  // Separate icons that would otherwise sit on top of each other and hide one another.
+  const minDist = imgSize * 0.95;
+  for (let iter = 0; iter < 12; iter += 1) {
+    let moved = false;
+    for (let i = 0; i < displayPoints.length; i += 1) {
+      for (let j = i + 1; j < displayPoints.length; j += 1) {
+        const a = displayPoints[i];
+        const b = displayPoints[j];
+        let ddx = b.dx - a.dx;
+        let ddy = b.dy - a.dy;
+        let dist = Math.hypot(ddx, ddy);
+        if (dist < minDist) {
+          moved = true;
+          if (dist < 0.01) {
+            const angle = ((i * 47 + j * 13) % 360) * (Math.PI / 180);
+            ddx = Math.cos(angle);
+            ddy = Math.sin(angle);
+            dist = 1;
+          }
+          const overlap = (minDist - dist) / 2;
+          const ux = ddx / dist;
+          const uy = ddy / dist;
+          a.dx -= ux * overlap;
+          a.dy -= uy * overlap;
+          b.dx += ux * overlap;
+          b.dy += uy * overlap;
+        }
+      }
+    }
+    if (!moved) break;
+  }
+
+  for (const { p, cx, cy, dx, dy } of displayPoints) {
+    console.log(p.game, p.completionPct, p.avgOrder);
 
     // Small dot for exact coordinate
     const circle = el("circle", { class: "point", cx, cy, r: 3 });
     pointsGroup.appendChild(circle);
 
+    // Leader line if the icon had to be nudged away from its exact position
+    if (Math.hypot(dx - cx, dy - cy) > 2) {
+      pointsGroup.appendChild(el("line", {
+        class: "leader-line",
+        x1: cx, y1: cy, x2: dx, y2: dy,
+      }));
+    }
+
     // Disk Image
     const gameId = gameToId[p.game];
     if (gameId) {
-      const imgSize = 44;
       const diskImg = el("image", {
         href: `disks/${gameId}.png`,
-        x: cx - imgSize / 2,
-        y: cy - imgSize / 2,
+        x: dx - imgSize / 2,
+        y: dy - imgSize / 2,
         width: imgSize,
         height: imgSize,
         class: "game-disk"
       });
-      
+
       const title = document.createElementNS(ns, "title");
       title.textContent = `${p.game}: ${p.completionPct.toFixed(1)}% complete, avg order ${p.avgOrder.toFixed(2)}`;
       diskImg.appendChild(title);
@@ -257,7 +305,7 @@ async function main() {
     renderScatter(points);
     setStatus(`Plotted ${points.length} games.`);
   } catch (error) {
-    setStatus(`Could not load CSV data: ${error.message}`, true);
+    setStatus(`Could not load data from Google Sheets: ${error.message}`, true);
   }
 }
 

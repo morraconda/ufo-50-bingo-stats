@@ -70,3 +70,9 @@
   fill: #7dd3fc;
   stroke: #0369a1;
 }
+
+.scatter-svg .leader-line {
+  stroke: #64748b;
+  stroke-width: 1;
+  stroke-dasharray: 2 2;
+}

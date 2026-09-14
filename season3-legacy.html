@@ -3,27 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UFO Bingo Stats Dashboard - Season 4</title>
-    <script>
-      window.SEASON_CONFIG = { name: "Season 4", spreadsheetId: "10OuFdCtSeHEgkTwJyrQmAS_wUt4BE7E-sbVBA3eDDqA" };
-    </script>
+    <title>UFO Bingo Stats Dashboard - Season 3 (legacy)</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <main class="container">
       <header>
         <div class="season-tabs">
-          <a class="season-tab active" href="./index.html">Season 4</a>
+          <a class="season-tab" href="./index.html">Season 4</a>
           <a class="season-tab" href="./season3.html">Season 3</a>
           <a class="season-tab" href="./season2.html">Season 2</a>
           <a class="season-tab" href="./season1.html">Season 1</a>
           <a class="season-tab" href="./nonleague.html">Non-League</a>
-          <a class="season-tab legacy" href="./season3-legacy.html">Season 3 (legacy)</a>
+          <a class="season-tab legacy active" href="./season3-legacy.html">Season 3 (legacy)</a>
         </div>
         <p class="nav-link">
           <a href="./graph/index.html">Scatter: all games (completion % vs avg order)</a>
         </p>
-        <h1>UFO Bingo Stats Dashboard - Season 4</h1>
+        <h1>UFO Bingo Stats Dashboard - Season 3 (legacy)</h1>
         <p><small>Held together with blu tack and duct tape. If you're getting a CSV parse error, you need to clear cookies. If a bar stops showing, pressing the button again may make it show (or it's broken.)</small></p>
         <p>
           <i><small>*almost entirely vibe-coded. feel free to not use this tool if you dont like that.</small></i><br></br>
@@ -57,6 +54,14 @@
           </div>
         </div>
 
+        <div class="control-row">
+          <label for="goalTypeSelect">Goal Type</label>
+          <div class="selector-group">
+            <select id="goalTypeSelect"></select>
+            <button id="goalTypeShowAll" type="button" class="using-badge">Show All</button>
+          </div>
+        </div>
+
         <div id="summaryBox" class="summary-box">
           <h4>Currently Showing</h4>
           <p id="summaryText">Select a filter to view statistics</p>
@@ -86,6 +91,7 @@
               <select id="averageModeSelect" class="average-mode-select">
                 <option value="tier">By Tier</option>
                 <option value="game">By Game</option>
+                <option value="difficulty">By Difficulty</option>
               </select>
             </div>
             <p id="tierAverageSample" class="tier-average-sample"></p>
@@ -134,6 +140,7 @@
       <section id="status" class="status">Loading data from Google Sheets...</section>
     </main>
 
-    <script type="module" src="./season-app.js"></script>
+    <script src="./sheets-api.js" defer></script>
+    <script src="./app.js" defer></script>
   </body>
 </html>
