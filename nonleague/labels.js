@@ -24,7 +24,7 @@ export function sampleSizeText(stats, { mode, player, game }, window) {
   }
 
   return isAll(game)
-    ? `Based on ${stats.total} goals across all games, ${span}.`
+    ? `Based on ${stats.total} goals across all games in Non-League, ${span}.`
     : `Based on ${stats.total} ${game} goals, ${span}.`;
 }
 
@@ -34,7 +34,7 @@ export function averagePanelText({ mode, game }, window, averageMode, goalCount)
   if (averageMode === "game") {
     return {
       title: "Game average",
-      sample: `Based on ${goalCount} goals across all games, ${span}.`,
+      sample: `Based on ${goalCount} goals across all games in Non-League, ${span}.`,
     };
   }
 
@@ -47,7 +47,7 @@ export function averagePanelText({ mode, game }, window, averageMode, goalCount)
 }
 
 export function showAllSummary({ mode, player, game }, window, filterType) {
-  const scope = isAll(game) ? "across all games" : `in ${game}`;
+  const scope = isAll(game) ? "across all games in Non-League" : `in ${game}`;
   const span = describeWindow(window);
 
   if (filterType === "player") {

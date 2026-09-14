@@ -472,18 +472,18 @@ function showAllBars(filterType) {
       const selectedTier = tierSelect.value;
       summaryText = isAll(selectedGame)
         ? isAll(selectedType)
-          ? `Showing all players in tier ${selectedTier} across all games and all goal types`
-          : `Showing all players in tier ${selectedTier} across all games for ${selectedType} goals`
+          ? `Showing all players in tier ${selectedTier} across all games and all goal types in Season 3`
+          : `Showing all players in tier ${selectedTier} across all games for ${selectedType} goals in Season 3`
         : isAll(selectedType)
-          ? `Showing all players in tier ${selectedTier} in ${selectedGame} across all goal types`
+          ? `Showing all players in tier ${selectedTier} in ${selectedGame} across all goal types in Season 3`
           : `Showing all players in tier ${selectedTier} in ${selectedGame} for ${selectedType} goals`;
     } else {
       summaryText = isAll(selectedGame)
         ? isAll(selectedType)
-          ? "Showing all players across all games and all goal types"
-          : `Showing all players across all games for ${selectedType} goals`
+          ? "Showing all players across all games and all goal types in Season 3"
+          : `Showing all players across all games for ${selectedType} goals in Season 3`
         : isAll(selectedType)
-          ? `Showing all players in ${selectedGame} across all goal types`
+          ? `Showing all players in ${selectedGame} across all goal types in Season 3`
           : `Showing all players in ${selectedGame} for ${selectedType} goals`;
     }
   } else if (filterType === "tier") {
@@ -491,41 +491,41 @@ function showAllBars(filterType) {
       const selectedPlayer = playerSelect.value;
       summaryText = isAll(selectedGame)
         ? isAll(selectedType)
-          ? `Showing all tiers for ${selectedPlayer} across all games and all goal types`
-          : `Showing all tiers for ${selectedPlayer} across all games for ${selectedType} goals`
+          ? `Showing all tiers for ${selectedPlayer} across all games and all goal types in Season 3`
+          : `Showing all tiers for ${selectedPlayer} across all games for ${selectedType} goals in Season 3`
         : isAll(selectedType)
-          ? `Showing all tiers for ${selectedPlayer} in ${selectedGame} across all goal types`
+          ? `Showing all tiers for ${selectedPlayer} in ${selectedGame} across all goal types in Season 3`
           : `Showing all tiers for ${selectedPlayer} in ${selectedGame} for ${selectedType} goals`;
     } else {
       summaryText = isAll(selectedGame)
         ? isAll(selectedType)
-          ? "Showing all tiers across all games and all goal types"
-          : `Showing all tiers across all games for ${selectedType} goals`
+          ? "Showing all tiers across all games and all goal types in Season 3"
+          : `Showing all tiers across all games for ${selectedType} goals in Season 3`
         : isAll(selectedType)
-          ? `Showing all tiers in ${selectedGame} across all goal types`
+          ? `Showing all tiers in ${selectedGame} across all goal types in Season 3`
           : `Showing all tiers in ${selectedGame} for ${selectedType} goals`;
     }
   } else if (filterType === "game") {
     if (filterMode === "player") {
       const selectedPlayer = playerSelect.value;
       summaryText = isAll(selectedType)
-        ? `Showing all games for ${selectedPlayer} across all goal types`
+        ? `Showing all games for ${selectedPlayer} across all goal types in Season 3`
         : `Showing all games for ${selectedPlayer} for ${selectedType} goals`;
     } else {
       const selectedTier = tierSelect.value;
       summaryText = isAll(selectedType)
-        ? `Showing all games in tier ${selectedTier} across all goal types`
+        ? `Showing all games in tier ${selectedTier} across all goal types in Season 3`
         : `Showing all games in tier ${selectedTier} for ${selectedType} goals`;
     }
   } else if (filterType === "goalType") {
     if (filterMode === "player") {
       const selectedPlayer = playerSelect.value;
       summaryText = isAll(selectedGame)
-        ? `Showing all goal types for ${selectedPlayer} across all games`
+        ? `Showing all goal types for ${selectedPlayer} across all games in Season 3`
         : `Showing all goal types for ${selectedPlayer} in ${selectedGame}`;
     } else {
       summaryText = isAll(selectedGame)
-        ? "Showing all goal types across all games"
+        ? "Showing all goal types across all games in Season 3"
         : `Showing all goal types in ${selectedGame}`;
     }
   }
@@ -799,23 +799,23 @@ function updateDashboard() {
       : filterMode === "player"
         ? isAll(selectedGame)
           ? isAll(selectedType)
-            ? `Based on ${stats.total} goals where ${selectedPlayer} played across all games.`
-            : `Based on ${stats.total} ${selectedType} goals where ${selectedPlayer} played across all games.`
+            ? `Based on ${stats.total} goals where ${selectedPlayer} played across all games in Season 3.`
+            : `Based on ${stats.total} ${selectedType} goals where ${selectedPlayer} played across all games in Season 3.`
           : isAll(selectedType)
             ? `Based on ${stats.total} goals where ${selectedPlayer} played ${selectedGame}.`
             : `Based on ${stats.total} ${selectedType} goals where ${selectedPlayer} played ${selectedGame}.`
         : isAll(selectedTier)
           ? isAll(selectedGame)
             ? isAll(selectedType)
-              ? `Based on ${stats.total} goals across all tiers and all games.`
-              : `Based on ${stats.total} ${selectedType} goals across all tiers and all games.`
+              ? `Based on ${stats.total} goals across all tiers and all games in Season 3.`
+              : `Based on ${stats.total} ${selectedType} goals across all tiers and all games in Season 3.`
             : isAll(selectedType)
-              ? `Based on ${stats.total} ${selectedGame} goals across all tiers.`
-              : `Based on ${stats.total} ${selectedType} goals in ${selectedGame} across all tiers.`
+              ? `Based on ${stats.total} ${selectedGame} goals across all tiers in Season 3.`
+              : `Based on ${stats.total} ${selectedType} goals in ${selectedGame} across all tiers in Season 3.`
           : isAll(selectedGame)
             ? isAll(selectedType)
-              ? `Based on ${stats.total} goals from tier ${selectedTier} across all games.`
-              : `Based on ${stats.total} ${selectedType} goals from tier ${selectedTier} across all games.`
+              ? `Based on ${stats.total} goals from tier ${selectedTier} across all games in Season 3.`
+              : `Based on ${stats.total} ${selectedType} goals from tier ${selectedTier} across all games in Season 3.`
             : isAll(selectedType)
               ? `Based on ${stats.total} ${selectedGame} goals from tier ${selectedTier}.`
               : `Based on ${stats.total} ${selectedType} goals in ${selectedGame} from tier ${selectedTier}.`;
@@ -861,11 +861,11 @@ function updateDashboard() {
     avgTitle = filterMode === "player" ? "Tier average (benchmark)" : "Global average (benchmark)";
     avgSample = isAll(selectedGame)
       ? isAll(selectedType)
-        ? `Based on ${avgFiltered.length} goals across all tiers and all games.`
-        : `Based on ${avgFiltered.length} ${selectedType} goals across all tiers and all games.`
+        ? `Based on ${avgFiltered.length} goals across all tiers and all games in Season 3.`
+        : `Based on ${avgFiltered.length} ${selectedType} goals across all tiers and all games in Season 3.`
       : isAll(selectedType)
-        ? `Based on ${avgFiltered.length} ${selectedGame} goals across all tiers.`
-        : `Based on ${avgFiltered.length} ${selectedType} goals in ${selectedGame} across all tiers.`;
+        ? `Based on ${avgFiltered.length} ${selectedGame} goals across all tiers in Season 3.`
+        : `Based on ${avgFiltered.length} ${selectedType} goals in ${selectedGame} across all tiers in Season 3.`;
   } else if (averageMode === "game") {
     // Show average across all games (respecting current tier/type selections)
     avgFiltered = rows.filter((row) => {
@@ -888,11 +888,11 @@ function updateDashboard() {
     avgTitle = "Game average";
     avgSample = isAll(selectedTier)
       ? isAll(selectedType)
-        ? `Based on ${avgFiltered.length} goals across all games and all types.`
-        : `Based on ${avgFiltered.length} ${selectedType} goals across all games.`
+        ? `Based on ${avgFiltered.length} goals across all games and all types in Season 3.`
+        : `Based on ${avgFiltered.length} ${selectedType} goals across all games in Season 3.`
       : isAll(selectedType)
-        ? `Based on ${avgFiltered.length} goals in all tiers across all types.`
-        : `Based on ${avgFiltered.length} ${selectedType} goals in all tiers.`;
+        ? `Based on ${avgFiltered.length} goals in all tiers across all types in Season 3.`
+        : `Based on ${avgFiltered.length} ${selectedType} goals in all tiers in Season 3.`;
   } else if (averageMode === "difficulty") {
     // Show average across all goal types (respecting current game/tier selections)
     avgFiltered = rows.filter((row) => {
@@ -914,10 +914,10 @@ function updateDashboard() {
     avgTitle = "Difficulty average";
     avgSample = isAll(selectedTier)
       ? isAll(selectedGame)
-        ? `Based on ${avgFiltered.length} goals across all goal types and all games.`
-        : `Based on ${avgFiltered.length} goals across all goal types in ${selectedGame}.`
+        ? `Based on ${avgFiltered.length} goals across all goal types and all games in Season 3.`
+        : `Based on ${avgFiltered.length} goals across all goal types in ${selectedGame} in Season 3.`
       : isAll(selectedGame)
-        ? `Based on ${avgFiltered.length} goals in tier ${selectedTier} across all goal types.`
+        ? `Based on ${avgFiltered.length} goals in tier ${selectedTier} across all goal types in Season 3.`
         : `Based on ${avgFiltered.length} goals in tier ${selectedTier} in ${selectedGame}.`;
   }
   

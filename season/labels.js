@@ -7,7 +7,9 @@ export function filterSummary({ mode, player, tier, game }) {
   return `${driving} | Game: ${game}`;
 }
 
-export function sampleSizeText(stats, { mode, player, tier, game }) {
+// Every "all tiers" / "all games" phrase below names the current season too, since the
+// page only ever covers one season and that scope would otherwise go unstated.
+export function sampleSizeText(stats, { mode, player, tier, game }, season) {
   if (stats.total === 0) {
     return mode === "player"
       ? "No matching goals found for this player/game combination."
@@ -16,41 +18,41 @@ export function sampleSizeText(stats, { mode, player, tier, game }) {
 
   if (mode === "player") {
     return isAll(game)
-      ? `Based on ${stats.total} goals where ${player} played across all games.`
+      ? `Based on ${stats.total} goals where ${player} played across all games in ${season}.`
       : `Based on ${stats.total} goals where ${player} played ${game}.`;
   }
 
   if (isAll(tier)) {
     return isAll(game)
-      ? `Based on ${stats.total} goals across all tiers and all games.`
-      : `Based on ${stats.total} ${game} goals across all tiers.`;
+      ? `Based on ${stats.total} goals across all tiers and all games in ${season}.`
+      : `Based on ${stats.total} ${game} goals across all tiers in ${season}.`;
   }
 
   return isAll(game)
-    ? `Based on ${stats.total} goals from tier ${tier} across all games.`
+    ? `Based on ${stats.total} goals from tier ${tier} across all games in ${season}.`
     : `Based on ${stats.total} ${game} goals from tier ${tier}.`;
 }
 
-export function averagePanelText({ mode, tier, game }, averageMode, goalCount) {
+export function averagePanelText({ mode, tier, game }, averageMode, goalCount, season) {
   if (averageMode === "game") {
     return {
       title: "Game average",
       sample: isAll(tier)
-        ? `Based on ${goalCount} goals across all games.`
-        : `Based on ${goalCount} goals in all tiers.`,
+        ? `Based on ${goalCount} goals across all games in ${season}.`
+        : `Based on ${goalCount} goals in all tiers in ${season}.`,
     };
   }
 
   return {
     title: mode === "player" ? "Tier average (benchmark)" : "Global average (benchmark)",
     sample: isAll(game)
-      ? `Based on ${goalCount} goals across all tiers and all games.`
-      : `Based on ${goalCount} ${game} goals across all tiers.`,
+      ? `Based on ${goalCount} goals across all tiers and all games in ${season}.`
+      : `Based on ${goalCount} ${game} goals across all tiers in ${season}.`,
   };
 }
 
-export function showAllSummary({ mode, player, tier, game }, filterType) {
-  const scope = isAll(game) ? "across all games" : `in ${game}`;
+export function showAllSummary({ mode, player, tier, game }, filterType, season) {
+  const scope = isAll(game) ? `across all games in ${season}` : `in ${game}`;
 
   if (filterType === "player") {
     return mode === "tier"

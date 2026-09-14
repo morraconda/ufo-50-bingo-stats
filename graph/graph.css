@@ -1,7 +1,7 @@
 .graph-page code {
   font-size: 0.9em;
-  color: #bae6fd;
-  background: #0f172a;
+  color: var(--accent-text);
+  background: var(--accent-bg);
   padding: 0.1em 0.35em;
   border-radius: 0.25rem;
 }
@@ -10,7 +10,8 @@
   margin: 1.5rem 0 1rem;
   padding: 1rem;
   border-radius: 0.75rem;
-  background: #1e293b;
+  background: var(--panel);
+  border: 1px solid var(--border-soft);
   overflow-x: auto;
 }
 
@@ -23,56 +24,56 @@
 }
 
 .scatter-svg .point-label {
-  fill: #e2e8f0;
+  fill: var(--text);
   font-size: 9px;
   font-family: Arial, Helvetica, sans-serif;
   paint-order: stroke fill;
-  stroke: #0f172a;
+  stroke: var(--bg);
   stroke-width: 3px;
   stroke-linejoin: round;
   pointer-events: none;
 }
 
 .scatter-svg .axis-line {
-  stroke: #64748b;
+  stroke: var(--text-faint);
   stroke-width: 1.5;
 }
 
 .scatter-svg .axis-tick {
-  stroke: #475569;
+  stroke: var(--border);
   stroke-width: 1;
 }
 
 .scatter-svg .axis-label {
-  fill: #94a3b8;
+  fill: var(--text-muted);
   font-size: 13px;
 }
 
 .scatter-svg .axis-title {
-  fill: #cbd5e1;
+  fill: var(--text-secondary);
   font-size: 15px;
   font-weight: 700;
 }
 
 .scatter-svg .grid-line {
-  stroke: #334155;
+  stroke: var(--border-soft);
   stroke-width: 1;
 }
 
 .scatter-svg .point {
-  fill: #38bdf8;
-  stroke: #0c4a6e;
+  fill: var(--accent);
+  stroke: var(--accent-text);
   stroke-width: 1.5;
   cursor: default;
 }
 
 .scatter-svg .point:hover {
-  fill: #7dd3fc;
-  stroke: #0369a1;
+  fill: var(--accent-bg-strong);
+  stroke: var(--accent);
 }
 
 .scatter-svg .leader-line {
-  stroke: #64748b;
+  stroke: var(--text-faint);
   stroke-width: 1;
   stroke-dasharray: 2 2;
 }

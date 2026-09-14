@@ -45,6 +45,10 @@ let rows = [];
 let filterMode = "tier";
 let activeShowAll = null;
 
+function seasonName() {
+  return window.SEASON_CONFIG?.name || "this season";
+}
+
 function currentSelection() {
   return {
     mode: filterMode,
@@ -93,7 +97,7 @@ function renderAveragePanel(selection) {
       // Across every tier and player, holding the game fixed
       : rows.filter((row) => matchesGame(row, selection.game));
 
-  const { title, sample } = averagePanelText(selection, averageMode, averageRows.length);
+  const { title, sample } = averagePanelText(selection, averageMode, averageRows.length, seasonName());
 
   renderStackedBar(averagePanel.bar, computeOutcomeStats(averageRows, "tier", selection.player));
   averagePanel.title.textContent = title;
@@ -106,7 +110,7 @@ function updateDashboard() {
   const stats = computeOutcomeStats(selectRows(rows, selection), selection.mode, selection.player);
 
   renderStackedBar(mainBar, stats);
-  sampleSize.textContent = sampleSizeText(stats, selection);
+  sampleSize.textContent = sampleSizeText(stats, selection, seasonName());
   renderAveragePanel(selection);
   applyFilterModeUi(selection);
 }
@@ -131,7 +135,7 @@ function renderShowAll(filterType) {
     };
   });
 
-  allBars.summary.textContent = showAllSummary(selection, filterType);
+  allBars.summary.textContent = showAllSummary(selection, filterType, seasonName());
   renderAllBars(
     allBars.container,
     sortBars(bars, {
